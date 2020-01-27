@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="lang">en</string>
+    <string name="app_name">My chef`s notes</string>
+    <string name="action_settings">Settings</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="mu">Measurement unit</string>
+    <string name="category_prompt">Choose category</string>
+    <string name="search_hint">Search recipe</string>
+    <string name="action_search">Search</string>
+    <string name="take_photo_help">Touch anywhere on screen to take picture</string>
+    <string name="hingenteringr">Enter ingredients name</string>
+    <string name="hintentermu">Enter measurment unit</string>
+    <string name="add">Add</string>
+    <string name="change">Change</string>
+    <string name="close">Close</string>
+    <string name="adding">+ Ingredients </string>
+    <string name="adddir">+ Direction </string>
+    <string name="changeing">C h a n g e   I n g r e d i e n t s </string>
+    <string name="changedir">C h a n g e   D i r e c t i o n </string>
+    <string name="hintenterrecipe">Enter recipe...</string>
+
+    <string name="hintnamerecipe">Name of recipe</string>
+    <string name="hintingredients">Enter ingredients....</string>
+    <string name="hintdirection">Directions...</string>
+
+    <string name="hintnameings">Name of ingredients</string>
+    <string name="hintnodescr">No description...</string>
+
+    <string name="createnew">Create_new</string>
+    <string name="showlist">Show list</string>
+    <string name="myweeklymenu">My weekly menu ...</string>
+
+    <string name="ingredient">Ingredients...</string>
+    <string name="recipe">Recipes...</string>
+
+    <string name="toastnorecipes">There is no recipes with entered ingredients.</string>
+    <string name="toastnoonerecipes">There is no one ingredients entered for recipe.</string>
+    <string name="toastemptyname">Name of recipe is empty, recipe will not be entered!</string>
+    <string name="toastlongpress">Long press, please!</string>
+    <string name="nosetimage">No set image</string>
+
+    <string name="deling">You can not delete some ingredients because some of them are used from some recipes.</string>
+    <string name="backup">Backup and Restore</string>
+    <string name="createbackup">Create copy...</string>
+    <string name="restore">Restore...</string>
+    <string name="ingexist">Ingredient already exist!</string>
+
+    <string-array name="category_arrays">
+        <item>Breakfast</item>
+        <item>Lunch</item>
+        <item>Dinner</item>
+        <item>Snack</item>
+    </string-array>
+
+    <string-array name="all_category_arrays" >
+        <item>Breakfast</item>
+        <item>Lunch</item>
+        <item>Dinner</item>
+        <item>Snack</item>
+        <item>Salad</item>
+        <item>Dessert</item>
+    </string-array>
+
+    <string name="m_check">m_check</string>
+    <string name="all_check">Check all</string>
+    <string name="messageneed">Click the search button, enter ingredients that you have and you will get a list of recipes that you can prepare.</string>
+    <string name="add_ingr_dialog">Ingredient...</string>
+
+</resources>

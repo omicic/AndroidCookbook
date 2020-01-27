@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/cheesetexture">
+
+    <TextView
+        android:id="@+id/sr_nameOfrecipe"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:paddingTop="5sp"
+        android:paddingLeft="10sp"
+        android:paddingRight="10sp"
+        android:paddingBottom="10sp"
+        android:textSize="20sp"
+        android:textColor="@color/cigla"
+        android:gravity="center_vertical"
+        android:background="@android:drawable/divider_horizontal_bright"
+        android:text="@string/hintnamerecipe" />
+
+    <LinearLayout
+        android:id="@+id/llimageanding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/sr_nameOfrecipe"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <TableLayout
+            android:id="@+id/sr_tableOfingredients"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"></TableLayout>
+
+        <ImageView
+            android:id="@+id/ivRecipe"
+            android:layout_width="120sp"
+            android:layout_height="120sp"
+            android:background="@android:drawable/divider_horizontal_bright" />
+
+    </LinearLayout>
+
+
+    <ScrollView
+        android:id="@+id/sr_directionsScroll"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/llimageanding"
+        android:background="@android:drawable/dialog_holo_light_frame"
+        android:paddingBottom="10sp"
+        android:paddingLeft="10sp"
+        android:paddingRight="10sp"
+        android:paddingTop="20sp">
+
+        <TextView
+            android:id="@+id/sr_directions"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:singleLine="false"
+            android:textColor="@color/blue"
+            android:hint="@string/hintnodescr"
+            android:textSize="14sp" />
+
+    </ScrollView>
+</RelativeLayout>

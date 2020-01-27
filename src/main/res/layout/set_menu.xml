@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/cheesetexture">
+
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/searchspinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.9" />
+
+        <AutoCompleteTextView
+            android:id="@+id/acRecipe"
+            android:layout_width="225dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/hintenterrecipe"
+            android:textColorHint="@color/gray">
+
+        </AutoCompleteTextView>
+    </LinearLayout>
+
+
+    <ScrollView
+        android:id="@+id/svtlForShowingRecipe"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/bSearch">
+
+        <TableLayout
+            android:id="@+id/tlForShowingListOfRecipe"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"></TableLayout>
+
+    </ScrollView>
+
+    <ImageButton
+        android:id="@+id/bSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/ll"
+        android:background="@android:drawable/ic_menu_search" />
+
+</RelativeLayout>
+

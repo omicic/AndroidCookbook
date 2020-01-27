@@ -1,0 +1,60 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.androidcookbook.MainActivity">
+
+    <item
+        android:id="@+id/menu_add_ingredients"
+        android:title="@string/ingredient"
+        android:icon="@drawable/compareicon">
+        <menu>
+            <item
+                android:id="@+id/menu_create_new"
+                android:title="@string/createnew" />
+            <item
+                android:id="@+id/menu_show_ingredients"
+                android:icon="@drawable/documenticon"
+                android:title="@string/showlist" />
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/menu_add_recipe"
+        android:title="@string/recipe"
+        android:icon="@drawable/ebookicon">
+        <menu>
+            <item
+                android:id="@+id/create_new_recipe"
+                android:title="@string/createnew"
+                android:icon="@drawable/newicon" />
+            <item
+                android:id="@+id/menu_show_recipe"
+                android:icon="@drawable/documenticon"
+                android:title="@string/showlist" />
+        </menu>
+
+    </item>
+
+    <item
+        android:id="@+id/menu_show_menu"
+        android:title="@string/myweeklymenu"></item>
+
+    <item
+        android:id="@+id/menu_backup"
+        android:title="@string/backup">
+        <menu>
+            <item
+                android:id="@+id/createbackup"
+                android:title="@string/createbackup" />
+            <item
+                android:id="@+id/restore"
+                android:title="@string/restore" />
+        </menu>
+    </item>
+
+</menu>
+
+
+        
+
+

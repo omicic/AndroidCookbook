@@ -1,0 +1,2215 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data-set xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<ingredient>
+		<Ingredientname>ananas - konzerva</Ingredientname>
+		<Mu>1</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>ananas - suvi</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>avokado</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>badem</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>badem - oljušteni suvi</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>badem - pržen u šećeru</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>badem - pečeni, slani</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>banana</Ingredientname>
+		<Mu>kom</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>banana - jestivi deo</Ingredientname>
+		<Mu>kom</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>banana - suva</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>bazgove bobice</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>borovnica</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>brazilski orah</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>breskva</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>breskva nektarina - glatka</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>brusnice</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>brusnice - sušene</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>datule</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>datule - sušene</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>dinja</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>dud - murva</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>dunja</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>dunja - mesnati deo</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>grejpfrut</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>grožđe - belo</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>grožđe - crno</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>grožđice - suvo grožđe</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>grejp crveni</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>jabuka</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>jabuka - mesnati deo</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>jabuka - sa medom</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>jabuka - suva</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>jabuke - granitirane</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>jagode</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>jagode - sa šećerom, prosečno</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kajsije</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kajsije - suve</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kesten - pečen</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kesten - sirov</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kikiriki - prženi slani</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kikiriki - sirovi neslani</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kivi</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>klementine</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kokos</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kokos - brašno sa šećerom</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kokosov orah</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kompot - od ananasa</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kompot - od borovnica</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kompot - od bresaka</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kompot - od kajsija</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kompot - od krušaka</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kompot - od šljiva</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kompot - od trešanja ili višanja</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kruška</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kruška - mesnati deo</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kupine</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>lešnik - sirovi</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>lešnik - suvi</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>lešnik - pečeni</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>limun</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>limeta</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>lubenica</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mak - sušeni</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>maline</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mandarine</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mango - mesnati deo</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mango - suvi</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>maslina - crna svježa</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>maslina - zelena svježa</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mušmula - cela</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mušmula - mesnati deo</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>nar</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>narandža</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>narandža - crvena</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>ogrozd</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>ogrozd - zreli</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>orah - sirovi</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>orah - suvi</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>papaja</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>papaja  - suva</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>pistaći</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>pistaći - slani</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>rabarbara</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>ribizla - bela</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>ribizla - crna</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>ribizle - crvena</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>rogač - mleveni</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>roščići</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>semenke - bundeve</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>semenke - maka (sušene)</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>semenke - suncokreta oljuštene suve</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>semenke - susama oljuštene suve</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>smokve</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>smokve - sušene</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>šipak</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>šipak - mogranj, pitomi i svež</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>šipak - sušeni mleveni</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>šljiva</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>šljive - suve</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>trešnje</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>urme - sušene</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>višnje</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>voće - konzervirano, prosečno</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>voće - suvo, prosečno</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>voćna salata</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>jogurt - 2%mm ''plus''</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>jogurt - 0,5% mm</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>jogurt - 0,9% mm ''ella''</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>jogurt - 1% mm ''viva plus''</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>jogurt - 1,5%mm ''fit''</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>jogurt - 3,2 % mm voćni</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>jogurt - 3,2% mm</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>jogurt - kuč</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>jogurt - voćni ''jogood'' kajsija</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kajmak</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kajmak - mladi</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kefir</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kiselo mleko - kravlje</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kiselo mleko - ovčije</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mileram - 21,5% mm.</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mlaćenica - stepka</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mleko - čokoladno 1% mm</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mleko - čokoladno 3,2% mm</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mleko - kobilje</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mleko - kozije</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mleko - kravlje 0.9% mm</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mleko - kravlje 1,5% mm</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mleko - kravlje 1,8% mm</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mleko - kravlje 2,2% mm</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mleko - kravlje 2,8% mm</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mleko - kravlje 2.8%mm ''somboled''</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mleko - kravlje 3,2%mm</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mleko - kravlje 3,3% mm</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mleko - kravlje kondenzovano</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mleko - kravlje kondenzovano 10% mm</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mleko - kravlje kondenzovano 7.5% mm</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mleko - kravlje obrano</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mleko - kravlje punomasno</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mleko - kravlje punomasno, evap., nezašećereno</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mleko - kravlje punomasno, kondenz., zašećereno</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mleko - kravlje sveže pomuženo</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mleko - ovčije</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mleko - sojino</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mleko - u prahu obrano</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mleko - u prahu punomasno</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mleko - žene</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>pavlaka kisela  - 10% mm</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>pavlaka kisela - 12% mm</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>pavlaka kisela  - 20% mm</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>pavlaka kisela - 30% mm</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>pavlaka slatka - 15%mm</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>pavlaka slatka - 15%mm umućena</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - "zdenka"</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - 20% mm</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - biljni (tipa kačkavalja i sl.)</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - ''biser''</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - brie</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - camembert</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - cheddar</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - edamer 40%mm</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - ementaler</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - feta, kravlja</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - feta, kravlja-light</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - feta, ovčija</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - feta, ovčija-light</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - gauda punomasni</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - gervais 60%mm</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - gorgonzola</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - kačkavalj</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - koziji</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - kravlji svež</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - kravlji svež 10%mm</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - kravlji svež 20%mm</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - kravlji svež 40%mm</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - kravlji svež 50%mm</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - kravlji svež kvark</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - kravlji sveži (cottage)</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - kravlji sveži (obrano 4)</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - kravlji, svež, beli</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - masni 40%</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - mozzarella</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - namaz 20%mm</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - namaz 30% mm</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - namaz 30%mm</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - namaz 40%mm</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - namaz ''imlek''</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - nizozemski</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - od soje (tipa kačkavalja i sl.)</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - parmezan</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - punomasni</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - punomasni 35%</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - roquefort</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - topljeni 45%mm</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - trapist</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir - zreli</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>sir -''ella'' 0% mm</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>slatko vrhnje</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>surutka</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>surutka - u prahu</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>bubrezi - goveđi</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>bubrezi - jagnjeći</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>bubrezi - pileći</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>bubrezi - svinjski</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>čvarci</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>čvarci - stišnjeni</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>ćuretina - belo meso</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>ćuretina - cela (prosečno)</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>ćuretina - crno meso (batak)</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>divlja svinja</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>džigernjača</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>fazan</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>golub - mladi</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>golub - odrasli</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>govedina - but</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>govedina - fileti</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>govedina - jako masna</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>govedina - jezik</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>govedina - kuk</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>govedina - loj</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>govedina - manje masna</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>govedina - mršava (nemasna)</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>govedina - prsa</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>govedina - rostbraten</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>govedina - sa 25% kosti</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>govedina - srednje masna</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>govedina - u konzervi</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>guščetina - masna</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>jagnjetina - grudi</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>jagnjetina - kotleti</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>jagnjetina - masna</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>jagnjetina - mršava (file)</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>jagnjetina - srednje masna</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>jarebica</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>jaretina</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>jetra - goveđa</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>jetra - guščija</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>jetra - kokošija</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>jetra - pileća</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>jetra - svinjska</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>jetra - teleća</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>jezik - goveđi, teleći,svinjski</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>jezik - suvi</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>junetina - manje masna</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>junetina - srednjemasna mesa</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kobasica - čajna</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kobasica - debrecina pržena</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kobasica - frankfurtska</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kobasica - govedina i svinjetina</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kobasica - goveđa</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kobasica - goveđa</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kobasica - kulen</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kobasica - lovačka</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kobasica - prosečno</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kobasica - roštiljska na ulju i vodi</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kobasica - sušena, dimljena</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kobasica - svinjska</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kobasica - svinjska (suva)</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kobasice - domaće mesne</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kobasice - pržene</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kokoš - belo meso</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kokoš - cela, prosečno</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kokoš - crno meso (batak)</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>konjsko meso</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kozije</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mesni narezak - od svinjskog mesa</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mesni narezak - svinjsko + goveđe</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mleveno meso - mešano</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mozak - teleći / jagnjeći</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>ovčetina</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>ovčetina - but</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>ovčetina - kotleti</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>ovčetina - loj</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>ovčetina - masna</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>ovčetina - mršava</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>ovčetina - plećka</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>ovčetina - polumasna</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>ovčetina - sa 17% kosti</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>pačetina - bez kože</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>pačetina - nemasna</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>pačetina - srednje masno</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>pašteta - jetrena, svinjska</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>pašteta - pileća</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>patka</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>patka - divlja</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>patka - nemasna</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>patka - srednje masna</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>patka - tovljena</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>pihtije/hladetina</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>pile - belo meso bez kostiju</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>pile - celo prosečno</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>pile - crno meso - batak</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>pluća - goveđa</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>prasetina - mršava</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>prasetina/pečenica</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>prasetina/pečenica</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>prepelica</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>pršuta</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>puž - vinogradski (očišćeni)</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>salama  - mortadela (svinjsko + goveče)</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>salama - ''gavrilovićeva''</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>salama - goveđa trajna (sudžuk)</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>salama - mortadela</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>salama - parizer</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>salama - pileća prsa</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>salama - pileća, ćureća</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>salama - prosečno</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>salama - šunkarica</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>salama - trajna (milanska)</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>salama - trajna (svinjsko + goveđe)</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>salama - trajna (svinjsko)</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>slanina - bez mišićnog tkiva</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>slanina - mesnata kuvana</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>slanina - polumasna</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>slanina - prošarana</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>slanina - suva</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>slanina - suva , masna</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>slanina - suva mesnata</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>slanina - svinjska sirova bez kože</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>slanina - svinjska sirova, soljena</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>slezina - goveđa</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>slezina - svinjska</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>srce - goveđe</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>srce - jagnjeće</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>srce - svinjsko</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>srce - teleće</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>srnetina - but</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>srnetina - prosečno</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>suvi vrat</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>svinjetina - but sirov</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>svinjetina - file</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>svinjetina - glava, noge</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>svinjetina - jako masno</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>svinjetina - jetra</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>svinjetina - jetra pečena</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>svinjetina - jezik</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>svinjetina - kare</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>svinjetina - kotlet</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>svinjetina - kotlet sa 29% kosti</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>svinjetina - kožice suve</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>svinjetina - krv</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>svinjetina - masna</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>svinjetina - mozak</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>svinjetina - mršava</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>svinjetina - nemasna kuvana</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>svinjetina - noga sušena</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>svinjetina - pečenica</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>svinjetina - plećka</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>svinjetina - polumasno</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>svinjetina - prosečno</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>svinjetina - rebarca pečena</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>svinjetina - sa 28% kosti</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>svinjetina - srednje masna</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>svinjetina - srednje masno</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>svinjetina - sušena</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>svinjetina - sušeni kare</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>svinjetina - škembići</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>svinjetina - švargla</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>svinjetina - vrat</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>šunka - bez masti</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>šunka - ćureća / pileća</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>šunka - dimljena kuvana</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>šunka - dimljena soljena sušena</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>šunka - dimljena, sirova</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>šunka - kuvana</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>šunka - kuvana masna</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>šunka - kuvana slana</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>šunka - praška</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>šunka - presovana bez masti</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>šunka - prosečno</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>šunka - srednje masna</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>šunka - stišnjena u omotu</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>teletina - jetra</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>teletina - jezik</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>teletina - kolenica</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>teletina - kotleti</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>teletina - masna</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>teletina - mozak</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>teletina - mršava</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>teletina - pluća</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>teletina - srce</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>teletina - srednje masna</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>viršle - od mešanog mesa</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>viršle - od pilećeg mesa</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>zec - poljski</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>zec - šumski</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>zečetina</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>žablji kraci</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>jaje ćureće</Ingredientname>
+		<Mu>kom</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>jaje guščije</Ingredientname>
+		<Mu>kom</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>jaje kokošje</Ingredientname>
+		<Mu>kom</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>jaje pačije</Ingredientname>
+		<Mu>kom</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>jaje prepelice</Ingredientname>
+		<Mu>kom</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>jaje u prahu</Ingredientname>
+		<Mu>kom</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>loj - goveđi</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>loj - ovčiji</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>majonez</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>majonez -domaći</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>margarin</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mast - ćureća</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mast - guščija</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mast - kokos</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mast - kokošija</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mast - pačija</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mast - svinjska</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>puter</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>puter - neslani</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>puter - od kikirikija</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>puter - slani</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>tartar sos</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>ulje - 1 k-ka 15 gr</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>ulje - bakalar (iz jetre)</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>ulje - bucino</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>ulje - bucino mešano (20% buc)</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>ulje - kikiriki</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>ulje - kokosovo</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>ulje - kukuruzno</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>ulje - maslinovo</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>ulje - od kukuruznih klica</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>ulje - pšenicnih klica</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>ulje - repino</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>ulje - sojino</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>ulje - suncokretovo</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>ulje - susamovo</Ingredientname>
+		<Mu>dl</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>ajvar - sa paprikama i patlidžanom</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>ajvar - sa pečenim paprikama</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>artičoka</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>artičoka - jestivi deo</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>artičoka - mladi cvetovi</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>bamija - mladi zeleni plodovi</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>bela repa - koren (sirova)</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>blitva</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>bob - suvi</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>bob - svež</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>boranija - kuvana u konzervi</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>boranija - zelena</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>boranija - žuta</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>brokoli - sirov</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>bundeva</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>bundeva - žuta</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>celer - koren</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>celer - kuvan u konzervi</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>celer - list</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>cvekla</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>cvekla - kuvana, konzervisana</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>feferoni</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>grašak - kuvani u konzervi</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>grašak - mladi</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>grašak - smrznuti</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>grašak - suvi</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>grašak - varivo</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>grašak - zeleni</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>karfiol</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>keleraba</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kelj - lisnati - raštika</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kelj - papučar (glavica)-prokulica</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kelj - pupčar (kuvani)</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kelj - pupčar (sirovi)</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kiselica - samo listovi</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>komorač - samo list</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>krastavac - kiseli</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>krastavac - svež</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>krompir - kuvani (oljušten)</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>krompir - minut pire</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>krompir - mladi</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>krompir - mladi pečen</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>krompir - pečen u rerni</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>krompir - pečeni - pomfrit</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>krompir - pire</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>krompir - restovan</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>krompir - slatki</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>krompir - suvi</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>krompir - zreli</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kupus - glavica - crveni</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kupus - beli</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kupus - kineski</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>kupus - kiseli</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>luk - beli</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>luk - crni</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>luk - crveni</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>luk - crveni suvi</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>luk - mladi</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>luk - vlasac (sirovi)</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mangold</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>maslačak - list</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>matovilac - repušac</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mešano povrće - svetlozelno</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>mešano povrće - tamnozelno</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>morska alga - suva</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>motovil - sal</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>paprika - crvena</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>paprika - crvena panirana prazna</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>paprika - crvena panirana sa sirom</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>paprika - kisela</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>paprika - zelena</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>paprika - žuta, slatka</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>paradajz</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>paradajz - kuvani</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>paradajz - pire u konzervi</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>paradajz - suvi</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>pasulj</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>pasulj - beli (tetovac)</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>pasulj - mladi (sirovi)</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>pasulj - šareni (trešnjevac)</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>paškanat - zelen</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>paštrnjak</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>patlidžan</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>patlidžan - paniran i pečen na ulju</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>patlidžan - sa sirom</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>pečurke - jelen (tartuf)</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>pečurke - lisičarka</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>pečurke - suve</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>pečurke - sveže, prosečno</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>pečurke - šampinjoni</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>pečurke - šampinjoni dinstani sa lukom, začinima i pavlakom</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>pečurke - u konzervi</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>pečurke - vrganj</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>perčuke - sušene</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>peršun</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>peršun - list</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>povrće - mešano za đuveč ''higlo''</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>praziluk - beli deo</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>praziluk - celi</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>prokelj</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>prokelj - vrhovi s cvetom</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>prokulica</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>rabarbara</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>radić - crveni</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>radić - savinjski</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>radić - zeleni</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>ren</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>ren - sirovi</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>repa - bela</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>repa - kisela</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>repa - sveža</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>rotkva</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>rotkva - bela</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>rotkva - crna</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>rotkvica - crvena</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>salata - berik</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>salata - endvija</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>salata - puter</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>salata - zelena</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>spanać</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>spanać - kuvani</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>spanać - sirovi</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>spanać - varivo (ulje,mleko,jaje,brašno,mirođija,so)</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>šargarepa</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>šargarepa - crvena</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>šargarepa - kuvana</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>šargarepa - smrznuta kocka ''higlo''</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>šargarepa - u konzervi</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>šargarepa - žuta</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+	<ingredient>
+		<Ingredientname>šitaki - dehidrirane</Ingredientname>
+		<Mu>g</Mu>
+	</ingredient>
+</data-set>

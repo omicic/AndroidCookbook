@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/cheesetexturecrop">
+
+    <EditText
+        android:id="@+id/name_ingredienteE"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:hint="@string/hingenteringr"
+        android:textColor="@color/blue"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@+id/name_ingredienteE">
+
+        <EditText
+            android:id="@+id/muE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/blue"
+            android:textSize="20sp"
+            android:hint="@string/hintentermu" />"
+
+        <EditText
+            android:id="@+id/etKcal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/blue"
+            android:textSize="20sp"
+            android:visibility="invisible"
+            android:hint="Kcal"
+            android:enabled="false" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/add_ingredients"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/ll"
+        android:background="@android:drawable/btn_default"
+        android:text="@string/add"
+        android:onClick="onSave" />
+
+    <Button
+        android:id="@+id/close_ingredients"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/ll"
+        android:layout_toRightOf="@+id/add_ingredients"
+        android:background="@android:drawable/btn_default"
+        android:text="@string/close"
+        android:onClick="onClose" />
+
+
+</RelativeLayout>

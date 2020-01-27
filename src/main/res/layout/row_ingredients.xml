@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/llstickyheader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/stickyheader"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/ibdelete"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:src="@drawable/deleteicon" />
+    </LinearLayout>
+
+
+    <ScrollView
+        android:id="@+id/scviewmakenote"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/llmakenote"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvRecipeMakeNote"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="20dp"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

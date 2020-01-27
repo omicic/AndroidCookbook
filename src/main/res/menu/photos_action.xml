@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/cnt_mnu_capture"
+        android:title="Capture image" />
+
+    <item
+        android:id="@+id/cnt_mnu_add_from_gallery"
+        android:title="Add from gallery" />
+</menu>
