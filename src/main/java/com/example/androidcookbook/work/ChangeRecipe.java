@@ -1,6 +1,5 @@
 package com.example.androidcookbook.work;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -28,6 +27,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.androidcookbook.R;
 import com.example.androidcookbook.mydb.IngredientsDB;
 import com.example.androidcookbook.mydb.MenuDB;
@@ -38,12 +39,13 @@ import com.example.androidcookbook.object.Recipe;
 import com.example.androidcookbook.object.RecipePrepare;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 
-public class ChangeRecipe extends Activity implements OnClickListener {
+public class ChangeRecipe extends AppCompatActivity implements OnClickListener {
 
     private static final int SELECT_PICTURE = 0;
     private static final int CAMERA_CAPTURE = 3;
@@ -124,7 +126,7 @@ public class ChangeRecipe extends Activity implements OnClickListener {
         addDirectionsBT = (Button) findViewById(R.id.add_direction_of_recipe);
         addPhotoBT = (ImageView) findViewById(R.id.add_photo_bt);
         addPhotoBT.setFocusable(false);
-        addPhotoBT.setRotation(90);
+        //addPhotoBT.setRotation(90);
 
         addIgredientsBT.setText(getResources().getString(R.string.changeing));
         addDirectionsBT.setText(getResources().getString(R.string.changedir));
@@ -152,7 +154,11 @@ public class ChangeRecipe extends Activity implements OnClickListener {
         }
 
         if (selectedImagePath.toString() != "No set image") {
-            ShowImage(selectedImagePath);
+            try {
+                ShowImage(selectedImagePath);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
         addIgredientsBT.setOnClickListener(this);
@@ -268,7 +274,11 @@ public class ChangeRecipe extends Activity implements OnClickListener {
             if (resultCode == RESULT_OK) {
                 selectedNewImageUri = data.getData();
                 selectedNewImagePath = utility.getPath(this, selectedNewImageUri);
-                ShowImage(selectedNewImagePath);
+                try {
+                    ShowImage(selectedNewImagePath);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
 
@@ -276,7 +286,11 @@ public class ChangeRecipe extends Activity implements OnClickListener {
             if (resultCode == RESULT_OK) {
                 selectedNewImageUri = data.getData();
                 selectedNewImagePath = utility.getPath(this, selectedNewImageUri);
-                ShowImage(selectedNewImagePath);
+                try {
+                    ShowImage(selectedNewImagePath);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
             if (resultCode == RESULT_CANCELED) {
                 finish();
@@ -284,12 +298,13 @@ public class ChangeRecipe extends Activity implements OnClickListener {
         }
     }
 
-    private void ShowImage(String selectedImagePath) {
+    private void ShowImage(String selectedImagePath) throws IOException {
 
         if (selectedImagePath != "No set image") { //if not empty
-            Bitmap bitmap = utility.ShrinkBitmap(selectedImagePath, 120, 120);
-            params.height = bitmap.getHeight();
-            params.width = bitmap.getWidth();
+           Bitmap bitmap = utility.ShrinkBitmap(this,selectedImagePath);
+
+            //params.height = bitmap.getHeight();
+            //params.width = bitmap.getWidth();
             addPhotoBT.setImageBitmap(bitmap);
         } else {
 

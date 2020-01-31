@@ -1,17 +1,20 @@
 package com.example.androidcookbook.work;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
 
 public class Utilities {
 
@@ -28,8 +31,8 @@ public class Utilities {
     }
 
     // shrink bitmap
-    Bitmap ShrinkBitmap(String file, int width, int height) {
-        BitmapFactory.Options bmpFactoryOptions = new BitmapFactory.Options();
+    public Bitmap ShrinkBitmap(Context context, String selectedImagePath) throws IOException {
+       /* BitmapFactory.Options bmpFactoryOptions = new BitmapFactory.Options();
         bmpFactoryOptions.inJustDecodeBounds = true;
         Bitmap bitmap = BitmapFactory.decodeFile(file, bmpFactoryOptions);
 
@@ -42,11 +45,25 @@ public class Utilities {
             } else {
                 bmpFactoryOptions.inSampleSize = widthRatio;
             }
-        }
+        }*/
+        ContentResolver cr = context.getContentResolver();
+        Bitmap bitmap = MediaStore.Images.Media
+                .getBitmap(cr, Uri.fromFile(new File(selectedImagePath)));
 
-        bmpFactoryOptions.inJustDecodeBounds = false;
-        bitmap = BitmapFactory.decodeFile(file, bmpFactoryOptions);
-        return bitmap;
+        float density = context.getResources().getDisplayMetrics().density;
+        int bounding = Math.round((float)250 * density);
+        float xScale = ((float) bounding) / bitmap.getWidth();
+        float yScale = ((float) bounding) / bitmap.getHeight();
+        float scale = (xScale <= yScale) ? xScale : yScale;
+        Matrix matrix = new Matrix();
+        // RESIZE THE BIT MAP
+        matrix.postScale(scale, scale);
+
+
+        // RECREATE THE NEW BITMap
+        Bitmap scaledBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+
+        return scaledBitmap;
     }
 
 

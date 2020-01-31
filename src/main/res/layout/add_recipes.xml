@@ -39,6 +39,7 @@
             android:layout_height="match_parent"
             android:background="@android:drawable/divider_horizontal_bright"
             android:clickable="true"
+            android:scaleType="fitCenter"
             android:src="@drawable/photo2" />
 
     </LinearLayout>

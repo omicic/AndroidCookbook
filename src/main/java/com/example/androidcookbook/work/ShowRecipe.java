@@ -1,6 +1,6 @@
 package com.example.androidcookbook.work;
 
-import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -19,6 +19,8 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.androidcookbook.R;
 import com.example.androidcookbook.mydb.IngredientsDB;
 import com.example.androidcookbook.mydb.RecipeDB;
@@ -27,10 +29,11 @@ import com.example.androidcookbook.object.Ingredient;
 import com.example.androidcookbook.object.Recipe;
 import com.example.androidcookbook.object.RecipePrepare;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 
-public class ShowRecipe extends Activity implements OnClickListener {
+public class ShowRecipe extends AppCompatActivity implements OnClickListener {
 
     private Button bCancel;
     private Button bEdit;
@@ -73,7 +76,7 @@ public class ShowRecipe extends Activity implements OnClickListener {
         tl = (TableLayout) findViewById(R.id.sr_tableOfingredients);
         tvDirections = (TextView) findViewById(R.id.sr_directions);
         ivRecipe = (ImageView) findViewById(R.id.ivRecipe);
-        ivRecipe.setRotation(90);
+        //ivRecipe.setRotation(90);
 
         nameOfRecipe.setText(recept.getRecipe().toString());
         tvDirections.setText(recept.getDescrtiption().toString());
@@ -88,9 +91,22 @@ public class ShowRecipe extends Activity implements OnClickListener {
 
         if (!pathName.equals("No set image")) //<--CHECK FILENAME IS NOT NULL
         {
+            ContentResolver cr = getContentResolver();
+            Bitmap bitmap = null;
+            try {
+                bitmap = android.provider.MediaStore.Images.Media
+                        .getBitmap(cr, Uri.parse(pathName));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             Utilities utility = new Utilities();
-            Bitmap bmp = utility.ShrinkBitmap(pathName, 120, 120);
-            ivRecipe.setImageBitmap(bmp);
+            Bitmap scaledBitmap = null;
+            try {
+                scaledBitmap = utility.ShrinkBitmap(this, pathName);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            ivRecipe.setImageBitmap(scaledBitmap);
         }
 
         nameOfRecipe.setTypeface(tf);
@@ -225,8 +241,14 @@ public class ShowRecipe extends Activity implements OnClickListener {
 
         if (!recept.getPicture().toString().equals("No set image")) {
             pathName = Environment.getExternalStorageDirectory() + "/recipeimage/" + recept.getId() + "recipe.jpg";
+
             Utilities utility = new Utilities();
-            Bitmap bmp = utility.ShrinkBitmap(pathName, 120, 120);
+            Bitmap bmp = null;
+            try {
+                bmp = utility.ShrinkBitmap(this, pathName);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             ivRecipe.setImageBitmap(bmp);
         }
         recdb.getDb().close();

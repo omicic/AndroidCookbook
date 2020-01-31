@@ -7,6 +7,11 @@
     <uses-permission android:name="android.hardware.camera.autofocus" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <uses-feature android:name="android.hardware.camera"/>
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+
     <application
         android:theme="@style/AppTheme">
 
@@ -52,6 +57,7 @@
         </activity>
 
         <activity android:name=".work.ShowRecipe"
+            android:theme="@style/Theme.AppCompat"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:launchMode="singleTask">
@@ -59,6 +65,7 @@
 
         <activity
             android:name=".work.ShowListOfRecipe"
+            android:theme="@style/Theme.AppCompat"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:noHistory = "true">
@@ -77,7 +84,7 @@
         <activity android:name=".work.ShowWeeklyMenu" android:theme="@style/Theme.AppCompat"  android:label="@string/app_name" android:screenOrientation="portrait"></activity>
         <activity android:name=".FindRecipes" android:theme="@style/Theme.AppCompat" android:label="@string/app_name" android:configChanges="orientation|screenSize"></activity>
         <activity android:name=".object.RecipeMenu" android:label="@string/app_name" android:screenOrientation="portrait"></activity>
-        <activity android:name=".work.ChangeRecipe" android:label="@string/app_name" android:screenOrientation="portrait"></activity>
+        <activity android:name=".work.ChangeRecipe"  android:theme="@style/Theme.AppCompat" android:label="@string/app_name" android:screenOrientation="portrait"></activity>
         <activity android:name=".work.ChangeDirection" android:label="@string/app_name" android:screenOrientation="portrait"></activity>
 
 

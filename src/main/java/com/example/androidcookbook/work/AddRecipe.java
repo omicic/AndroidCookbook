@@ -1,13 +1,17 @@
 package com.example.androidcookbook.work;
 
 import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Typeface;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Gravity;
@@ -125,9 +129,10 @@ public class AddRecipe extends AppCompatActivity implements OnClickListener {
         addDirectionsBT = (Button) findViewById(R.id.add_direction_of_recipe);
         //addDirectionsBT.setBackgroundResource(R.drawable.selector);
         addDirectionsBT.setTypeface(tf);
+
         addPhotoBT = (ImageView) findViewById(R.id.add_photo_bt);
         addPhotoBT.setFocusable(false);
-        addPhotoBT.setRotation(90);
+        //addPhotoBT.setRotation(90);
 
         llimage = (LinearLayout) findViewById(R.id.llspinnerimage);
         llimage.setGravity(Gravity.CENTER);
@@ -261,12 +266,14 @@ public class AddRecipe extends AppCompatActivity implements OnClickListener {
         if (requestCode == REQUEST_IMAGE_CAPTURE) { //CAPTURE IMAGE
             if (resultCode == RESULT_OK) {
                 ShowImage();
+                Log.d("capture", "ok");
             }
         }
 
         if (requestCode == SELECT_PICTURE) { //from Gallery
             if (resultCode == RESULT_OK) {
                 ShowImage();
+
             }
         }
     }
@@ -274,16 +281,28 @@ public class AddRecipe extends AppCompatActivity implements OnClickListener {
     private void ShowImage() {
 
         Uri selectedImageUri = data.getData();
-        selectedImagePath = utility.getPath(this, selectedImageUri); //ok
+        selectedImagePath = utility.getPath(this, selectedImageUri);
+        //getContentResolver().notifyChange(selectedImageUri, null);
 
-        bitmap = utility.ShrinkBitmap(selectedImagePath, 250, 250);
+        try {
+           // bitmap = android.provider.MediaStore.Images.Media.getBitmap(cr, selectedImageUri);
+
+            Bitmap scaledBitmap = utility.ShrinkBitmap(this, selectedImagePath);
+
+            //int width = scaledBitmap.getWidth(); // re-use
+           // int height = scaledBitmap.getHeight(); // re-use
+            /* params.height = height;
+            params.width = width;*/
+
+            addPhotoBT.setImageBitmap(scaledBitmap);
+
+        } catch (Exception e) {
+            Toast.makeText(this, "Failed to load", Toast.LENGTH_SHORT)
+                    .show();
+            Log.e("Camera", e.toString());
+        }
 
 
-
-        params.height = bitmap.getHeight();
-        params.width = bitmap.getWidth();
-
-        addPhotoBT.setImageBitmap(bitmap);
 
     }
 
@@ -442,8 +461,10 @@ public class AddRecipe extends AppCompatActivity implements OnClickListener {
                 PackageManager pm = getPackageManager();
                 if (pm.hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
                     Intent i = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+
                     if (i.resolveActivity(getPackageManager()) != null) {
                         startActivityForResult(i, REQUEST_IMAGE_CAPTURE);
+
                     } else {
                         Toast.makeText(getBaseContext(), "Camera is not available!", Toast.LENGTH_LONG).show();
                     }

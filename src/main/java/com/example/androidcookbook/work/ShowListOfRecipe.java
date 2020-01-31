@@ -22,6 +22,8 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.androidcookbook.MyAdapterPrikazRecepata;
 import com.example.androidcookbook.R;
 import com.example.androidcookbook.mydb.MenuDB;
@@ -39,7 +41,7 @@ import java.util.List;
 import java.util.Map.Entry;
 
 
-public class ShowListOfRecipe extends Activity implements OnCheckedChangeListener, OnClickListener {
+public class ShowListOfRecipe extends AppCompatActivity implements OnCheckedChangeListener, OnClickListener {
 
     private ListView listView;
     private ImageButton closeBT;
