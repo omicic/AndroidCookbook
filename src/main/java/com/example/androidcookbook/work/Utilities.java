@@ -31,24 +31,33 @@ public class Utilities {
     }
 
     // shrink bitmap
+    public Bitmap ShrinkBitmap(Context context, Bitmap bitmap) throws IOException {
+
+        //ContentResolver cr = context.getContentResolver();
+       // Bitmap bitmap = MediaStore.Images.Media
+      //          .getBitmap(cr, Uri.fromFile(new File(selectedImagePath)));
+
+        float density = context.getResources().getDisplayMetrics().density;
+        int bounding = Math.round((float)250 * density);
+        float xScale = ((float) bounding) / bitmap.getWidth();
+        float yScale = ((float) bounding) / bitmap.getHeight();
+        float scale = (xScale <= yScale) ? xScale : yScale;
+        Matrix matrix = new Matrix();
+        // RESIZE THE BIT MAP
+        matrix.postScale(scale, scale);
+
+
+        // RECREATE THE NEW BITMap
+        Bitmap scaledBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+
+        return scaledBitmap;
+    }
+
     public Bitmap ShrinkBitmap(Context context, String selectedImagePath) throws IOException {
-       /* BitmapFactory.Options bmpFactoryOptions = new BitmapFactory.Options();
-        bmpFactoryOptions.inJustDecodeBounds = true;
-        Bitmap bitmap = BitmapFactory.decodeFile(file, bmpFactoryOptions);
 
-        int heightRatio = (int) Math.ceil(bmpFactoryOptions.outHeight / (float) height);
-        int widthRatio = (int) Math.ceil(bmpFactoryOptions.outWidth / (float) width);
-
-        if (heightRatio > 1 || widthRatio > 1) {
-            if (heightRatio > widthRatio) {
-                bmpFactoryOptions.inSampleSize = heightRatio;
-            } else {
-                bmpFactoryOptions.inSampleSize = widthRatio;
-            }
-        }*/
         ContentResolver cr = context.getContentResolver();
-        Bitmap bitmap = MediaStore.Images.Media
-                .getBitmap(cr, Uri.fromFile(new File(selectedImagePath)));
+         Bitmap bitmap = MediaStore.Images.Media
+                  .getBitmap(cr, Uri.fromFile(new File(selectedImagePath)));
 
         float density = context.getResources().getDisplayMetrics().density;
         int bounding = Math.round((float)250 * density);
@@ -132,4 +141,28 @@ public class Utilities {
 
         return selectedImagePath;
     }
+
+
+
+    public String TakePicture(int nextid) {
+
+        //Uri selectedImageUri = data.getData();
+
+        String selectedImagePath = "";
+
+        //Log.d("selectedImagePath Utilities Take Picture",selectedImagePath);
+
+        File folder = new File(Environment.getExternalStorageDirectory() + "/recipeimage");
+        boolean success = true;
+        if (!folder.exists()) {
+            success = folder.mkdir();
+        }
+
+        File to = new File(Environment.getExternalStorageDirectory() + "/recipeimage/" + Integer.toString(nextid) + "recipe.jpg");
+
+        selectedImagePath = Environment.getExternalStorageDirectory() + "/recipeimage/" + Integer.toString(nextid) + "recipe.jpg";
+
+        return selectedImagePath;
+    }
+
 }

@@ -1,6 +1,5 @@
 package com.example.androidcookbook.work;
 
-import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -8,9 +7,9 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Typeface;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -42,6 +41,8 @@ import com.example.androidcookbook.object.Ingredient;
 import com.example.androidcookbook.object.Recipe;
 import com.example.androidcookbook.object.RecipePrepare;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -147,10 +148,8 @@ public class AddRecipe extends AppCompatActivity implements OnClickListener {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         getMenuInflater().inflate(R.menu.add_recipe_menu, menu);
         return true;
-
     }
 
     @Override
@@ -161,9 +160,7 @@ public class AddRecipe extends AppCompatActivity implements OnClickListener {
                 try {
                     //naziv recepta mora da bude unet inace nece biti dodat recept
                     if (!recipeET.getText().toString().equals("")) {
-
                         saveItToDB();
-
                     } else {
                         Toast.makeText(this.getBaseContext(), getResources().getString(R.string.toastemptyname), Toast.LENGTH_LONG).show();
                         this.finish();
@@ -265,53 +262,64 @@ public class AddRecipe extends AppCompatActivity implements OnClickListener {
 
         if (requestCode == REQUEST_IMAGE_CAPTURE) { //CAPTURE IMAGE
             if (resultCode == RESULT_OK) {
-                ShowImage();
-                Log.d("capture", "ok");
+                Bundle extras = data.getExtras();
+                selectedImagePath = "";
+                Bitmap bitmap = (Bitmap) extras.get("data");
+
+                Bitmap scaledBitmap = null;
+                try {
+                    scaledBitmap = utility.ShrinkBitmap(this, bitmap);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                addPhotoBT.setImageBitmap(scaledBitmap);
             }
         }
 
         if (requestCode == SELECT_PICTURE) { //from Gallery
             if (resultCode == RESULT_OK) {
-                ShowImage();
 
+                selectedImagePath = utility.getPath(this, data.getData());
+                ContentResolver cr = this.getContentResolver();
+                Bitmap bitmap=null;
+                try {
+                    bitmap = MediaStore.Images.Media
+                            .getBitmap(cr, Uri.fromFile(new File(selectedImagePath)));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                try {
+                    Bitmap scaledBitmap = utility.ShrinkBitmap(this, bitmap);
+                    addPhotoBT.setImageBitmap(scaledBitmap);
+
+                } catch (Exception e) {
+                    Toast.makeText(this, "Failed to load", Toast.LENGTH_SHORT)
+                            .show();
+                }
             }
         }
     }
 
     private void ShowImage() {
 
-        Uri selectedImageUri = data.getData();
+       /* Uri selectedImageUri = data.getData();
         selectedImagePath = utility.getPath(this, selectedImageUri);
-        //getContentResolver().notifyChange(selectedImageUri, null);
-
         try {
-           // bitmap = android.provider.MediaStore.Images.Media.getBitmap(cr, selectedImageUri);
-
             Bitmap scaledBitmap = utility.ShrinkBitmap(this, selectedImagePath);
-
-            //int width = scaledBitmap.getWidth(); // re-use
-           // int height = scaledBitmap.getHeight(); // re-use
-            /* params.height = height;
-            params.width = width;*/
-
             addPhotoBT.setImageBitmap(scaledBitmap);
 
         } catch (Exception e) {
             Toast.makeText(this, "Failed to load", Toast.LENGTH_SHORT)
                     .show();
-            Log.e("Camera", e.toString());
-        }
-
-
-
+        }*/
     }
-
 
     //ja bih ovo u Asynctask
     public void saveItToDB() {
 
         dbRecept.getDb().open();
-        TakePicture();
+        TakePicture(); //getting path of file /recipeimages/*recipeid.jpeg
         AddNewRecipe();
 
         startActivity(new Intent(this, ShowListOfRecipe.class));
@@ -319,11 +327,10 @@ public class AddRecipe extends AppCompatActivity implements OnClickListener {
         dbRecept.getDb().close();
     }
 
-
     private void TakePicture() {
 
         int nextid;
-        if (selectedImagePath != "") {
+        //if (selectedImagePath != "") {
             if (dbRecept.getLastId().toString() != "") {
                 nextid = Integer.parseInt(dbRecept.getLastId()) + 1; //uzmi poslednji id recepta i dodaj 1
             } else {
@@ -331,11 +338,20 @@ public class AddRecipe extends AppCompatActivity implements OnClickListener {
             }
 
             //ja bih ovo u AsyncTask
-            selectedImagePath = utility.TakePicture(this, this.data, nextid);
 
+        //Log.d("heeeej", String.valueOf(this.data.getData().getPath()));
+        //if(this.data.getData() == null){
+        if(selectedImagePath == ""){
+            selectedImagePath = utility.TakePicture(nextid);
         } else {
-            selectedImagePath = getResources().getString(R.string.nosetimage);
+            selectedImagePath = utility.TakePicture(this, this.data, nextid);
         }
+
+
+
+        //} else {
+       //     selectedImagePath = getResources().getString(R.string.nosetimage);
+       // }
     }
 
     private void saveRecipeIngredients() {
@@ -355,7 +371,7 @@ public class AddRecipe extends AppCompatActivity implements OnClickListener {
 
     private void AddNewRecipe() {
 
-        //Log.d("selectedImagePathTakeImageiznad", selectedImagePath);
+        Log.d("aaaaa", selectedImagePath); //ok
         if ("sr".equals(getString(R.string.lang))) {
             switch (kategorija) {
                 case "Doru�ak":
@@ -405,7 +421,6 @@ public class AddRecipe extends AppCompatActivity implements OnClickListener {
 
     private void AddNewIngToPrepare(String rec_id, String ing_id, String qu) {
         RecipeIngredientsDB.insertRecipeIngredients(rec_id, ing_id, qu);
-
     }
 
     // dodavanje items u spinner dinamicki
@@ -461,10 +476,8 @@ public class AddRecipe extends AppCompatActivity implements OnClickListener {
                 PackageManager pm = getPackageManager();
                 if (pm.hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
                     Intent i = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-
                     if (i.resolveActivity(getPackageManager()) != null) {
                         startActivityForResult(i, REQUEST_IMAGE_CAPTURE);
-
                     } else {
                         Toast.makeText(getBaseContext(), "Camera is not available!", Toast.LENGTH_LONG).show();
                     }
