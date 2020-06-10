@@ -22,6 +22,8 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.androidcookbook.MyAdapterShowIngredients;
 import com.example.androidcookbook.R;
 import com.example.androidcookbook.mydb.IngredientsDB;
@@ -32,7 +34,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 
-public class ShowIngredients extends Activity implements OnCheckedChangeListener, OnClickListener {
+public class ShowIngredients extends AppCompatActivity implements OnCheckedChangeListener, OnClickListener {
 
     private IngredientsDB ingredientDB;
     private ArrayList<String> cbtag;
@@ -57,8 +59,8 @@ public class ShowIngredients extends Activity implements OnCheckedChangeListener
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.my_show_list_layout);
 
+        setContentView(R.layout.my_show_list_layout);
         mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
         ingredientDB = new IngredientsDB(this);

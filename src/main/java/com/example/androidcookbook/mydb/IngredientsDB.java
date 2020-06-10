@@ -37,7 +37,7 @@ public class IngredientsDB {
             newTaskValue.put(Constants.KCAL, kcal);
             return db.getDb().insertOrThrow(Constants.TABLE_INGREDIENTS, null, newTaskValue);
         } catch (SQLiteConstraintException ex) {
-            Log.v("Greska insert into database", ex.getMessage());
+            //Log.v("Greska insert into database", ex.getMessage());
             return -1;
         }
     }

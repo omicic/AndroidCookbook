@@ -3,11 +3,13 @@ package com.example.androidcookbook.work;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,6 +22,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
 
 import com.example.androidcookbook.R;
 import com.example.androidcookbook.mydb.IngredientsDB;
@@ -29,7 +32,11 @@ import com.example.androidcookbook.object.Ingredient;
 import com.example.androidcookbook.object.Recipe;
 import com.example.androidcookbook.object.RecipePrepare;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 
 
@@ -81,21 +88,46 @@ public class ShowRecipe extends AppCompatActivity implements OnClickListener {
         nameOfRecipe.setText(recept.getRecipe().toString());
         tvDirections.setText(recept.getDescrtiption().toString());
 
-        pathName = Environment.getExternalStorageDirectory() + "/recipeimage/" + recept.getId() + "recipe.jpg";
+       // pathName = Environment.getExternalStorageDirectory().getAbsolutePath() + "/recipeimages/" + recept.getId() + "recipe.jpg";
+        pathName = recept.getPicture();
 
         if (pathName != null && pathName != "") {
             pathName = recept.getPicture();
+            Log.d("pathnameShowrecipe", pathName);
         } else {
             //Log.d("pathnameShowrecipe", pathName);
         }
 
         if (!pathName.equals("No set image")) //<--CHECK FILENAME IS NOT NULL
         {
-            ContentResolver cr = getContentResolver();
+            Utilities utility = new Utilities();
+
+            try {
+                final Uri imageUri = Uri.fromFile(new File(pathName));
+                //final Uri imageUri = FileProvider.getUriForFile(this, this.getPackageName() + ".provider", new File(pathName));
+
+               // final Uri imageUri = Uri.parse(pathName);
+                Log.d("pathnameShowrecipe", String.valueOf(imageUri));
+
+              final InputStream imageStream = getContentResolver().openInputStream(imageUri);
+               final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+                Bitmap scaledBitmap = utility.ShrinkBitmap(this, selectedImage);
+                ivRecipe.setImageBitmap(scaledBitmap);
+
+
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+           /* ContentResolver cr = getContentResolver();
             Bitmap bitmap = null;
+            Log.d("pathnameShowrecipe", pathName);
             try {
                 bitmap = android.provider.MediaStore.Images.Media
-                        .getBitmap(cr, Uri.parse(pathName));
+                        .getBitmap(cr, Uri.fromFile(new File(pathName)));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -106,7 +138,7 @@ public class ShowRecipe extends AppCompatActivity implements OnClickListener {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            ivRecipe.setImageBitmap(scaledBitmap);
+            ivRecipe.setImageBitmap(scaledBitmap);*/
         }
 
         nameOfRecipe.setTypeface(tf);
@@ -182,7 +214,10 @@ public class ShowRecipe extends AppCompatActivity implements OnClickListener {
                     Intent intent = new Intent();
                     intent.setAction(Intent.ACTION_VIEW);
 
-                    Uri uri = Uri.parse("file://" + pathName);
+                   // Uri uri = Uri.parse("file://" + pathName);
+
+                    Uri uri = FileProvider.getUriForFile(this, this.getApplicationContext().getPackageName() + ".provider", new File(pathName));
+
                     intent.setDataAndType(uri, "image/*");
                     startActivity(intent);
 
@@ -232,6 +267,7 @@ public class ShowRecipe extends AppCompatActivity implements OnClickListener {
         super.onResume();
 
         pathName = "No set image";
+
         RecipeDB recdb = new RecipeDB(this);
         String recid = recept.getId().toString();
 
@@ -240,7 +276,7 @@ public class ShowRecipe extends AppCompatActivity implements OnClickListener {
         tvDirections.setText(recept.getDescrtiption().toString());
 
         if (!recept.getPicture().toString().equals("No set image")) {
-            pathName = Environment.getExternalStorageDirectory() + "/recipeimage/" + recept.getId() + "recipe.jpg";
+            pathName = String.format("%s/recipeimages/%srecipe.jpg", Environment.getExternalStorageDirectory().getAbsolutePath(), recept.getId());
 
             Utilities utility = new Utilities();
             Bitmap bmp = null;

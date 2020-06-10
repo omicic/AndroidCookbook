@@ -1,16 +1,20 @@
 package com.example.androidcookbook;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
@@ -51,47 +55,6 @@ import java.util.concurrent.ExecutionException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
-/*public class MainActivity extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    */
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     public static final int TIME_ENTRY_REQUEST_CODE = 1;
@@ -118,8 +81,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ArrayList<String> alfs;
 
     private int size;
-    private int sizee;
-
+   //private int sizee;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -142,24 +104,61 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         recipes = recipeDB.getAllRecepte();
         alfs = new ArrayList<String>();
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (!Settings.System.canWrite(this)) {
+                requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.READ_EXTERNAL_STORAGE}, 2909);
+            } else {
+                // continue with your code
+                try {
+                    checkSharedPrefState();
+                } catch (InterruptedException | ExecutionException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }  //ako je postavljen sticky na naslovnom ekranu, namirnice koje treba kupiti za odabrani recept
 
-        try {
-            checkSharedPrefState();
-        } catch (InterruptedException | ExecutionException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }  //ako je postavljen sticky na naslovnom ekranu, namirnice koje treba kupiti za odabrani recept
+                takemanuForDay();
 
-        takemanuForDay();
+                ingdb = new IngredientsDB(this);
+                ingdb.getDb().open();
+                if (ingdb.getAllIngredients().size() == 0) {
+                    getIngredeitnsFromAsset();
+                }
 
-        ingdb = new IngredientsDB(this);
-        ingdb.getDb().open();
-        if (ingdb.getAllIngredients().size() == 0) {
-            getIngredeitnsFromAsset();
+                ibFindRecipes.setOnClickListener(this);
+            }
+        } else {
+            // continue with your code
+            try {
+                checkSharedPrefState();
+            } catch (InterruptedException | ExecutionException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }  //ako je postavljen sticky na naslovnom ekranu, namirnice koje treba kupiti za odabrani recept
+
+            takemanuForDay();
+
+            ingdb = new IngredientsDB(this);
+            ingdb.getDb().open();
+            if (ingdb.getAllIngredients().size() == 0) {
+                getIngredeitnsFromAsset();
+            }
+            ibFindRecipes.setOnClickListener(this);
         }
+    }
 
-        ibFindRecipes.setOnClickListener(this);
-
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case 2909: {
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Log.e("Permission", "Granted");
+                } else {
+                    Log.e("Permission", "Denied");
+                }
+                return;
+            }
+        }
     }
 
     private void takemanuForDay() {
@@ -197,7 +196,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case Calendar.SATURDAY:
                 makeTodayMenu("5");
                 return;
-
         }
     }
 
@@ -226,9 +224,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 llmenu.addView(tv, lp);
             }
         }
-
         recipeDB.getDb().close();
-
     }
 
     private void getIngredeitnsFromAsset() {
@@ -264,7 +260,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     @SuppressLint("ResourceType")
@@ -297,7 +292,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-
     private class FindSticky extends AsyncTask<ArrayList<Recipe>, Void, ArrayList<String>> {
 
         private ArrayList<Recipe> recarray;
@@ -322,11 +316,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     recidforshowingsticky.add(recarray.get(j).getId().toString());
                 }
             }
-
             return recidforshowingsticky;
-
         }
-
 
         @Override
         protected void onPostExecute(ArrayList<String> result) {
@@ -462,7 +453,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
-
         if (v.getId() == R.id.ibFindRecipes) {
             onCreateDialog();
         }
@@ -480,9 +470,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-
     public Dialog onCreateDialog() {
-
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
         alertDialogBuilder.setCancelable(true);
@@ -507,13 +495,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d("onResume after showNote", "aaa");
-
-
+       // Log.d("onResume after showNote", "aaa");
         try {
 
             llstickybuttons.removeAllViews();

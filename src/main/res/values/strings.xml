@@ -17,8 +17,8 @@
     <string name="close">Close</string>
     <string name="adding">+ Ingredients </string>
     <string name="adddir">+ Direction </string>
-    <string name="changeing">C h a n g e   I n g r e d i e n t s </string>
-    <string name="changedir">C h a n g e   D i r e c t i o n </string>
+    <string name="changeing">Change Ingredients </string>
+    <string name="changedir">Change Direction </string>
     <string name="hintenterrecipe">Enter recipe...</string>
 
     <string name="hintnamerecipe">Name of recipe</string>

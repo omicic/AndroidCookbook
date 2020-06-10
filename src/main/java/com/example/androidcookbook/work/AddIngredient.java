@@ -29,7 +29,6 @@ public class AddIngredient extends Activity {
     private Intent Intent;
     private Button buttonClose;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -69,9 +68,7 @@ public class AddIngredient extends Activity {
 
         buttonClose.setOnClickListener(new OnClickListener() {
 
-
             private android.content.Intent ii;
-
             public void onClick(View v) {
 
                 if (getIntent().getExtras().getParcelable("ing") != null) {
@@ -80,13 +77,10 @@ public class AddIngredient extends Activity {
                     finish();
                 }
             }
-
         });
-
     }
 
     private void startIntent() {
-
         if (getIntent().getExtras().getParcelable("ing") != null) {
             Intent i = new Intent(this, ShowIngredients.class);
             startActivity(i);
@@ -94,7 +88,6 @@ public class AddIngredient extends Activity {
         } else {
             finish();
         }
-
     }
 
     private void saveIngredientsToDB() {

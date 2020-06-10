@@ -1,8 +1,10 @@
 package com.example.androidcookbook.work;
 
+import android.Manifest;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
@@ -11,6 +13,9 @@ import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
+
+import androidx.core.content.ContextCompat;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -33,10 +38,6 @@ public class Utilities {
     // shrink bitmap
     public Bitmap ShrinkBitmap(Context context, Bitmap bitmap) throws IOException {
 
-        //ContentResolver cr = context.getContentResolver();
-       // Bitmap bitmap = MediaStore.Images.Media
-      //          .getBitmap(cr, Uri.fromFile(new File(selectedImagePath)));
-
         float density = context.getResources().getDisplayMetrics().density;
         int bounding = Math.round((float)250 * density);
         float xScale = ((float) bounding) / bitmap.getWidth();
@@ -46,16 +47,17 @@ public class Utilities {
         // RESIZE THE BIT MAP
         matrix.postScale(scale, scale);
 
-
         // RECREATE THE NEW BITMap
         Bitmap scaledBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
 
         return scaledBitmap;
     }
 
+
     public Bitmap ShrinkBitmap(Context context, String selectedImagePath) throws IOException {
 
         ContentResolver cr = context.getContentResolver();
+
          Bitmap bitmap = MediaStore.Images.Media
                   .getBitmap(cr, Uri.fromFile(new File(selectedImagePath)));
 
@@ -83,6 +85,7 @@ public class Utilities {
      */
     public String getPath(Context context, Uri uri) {
         // just some safety built in
+        Log.d("", uri.toString());
         if (uri == null) {
             // TODO perform some logging or show user feedback
             return null;
@@ -103,7 +106,7 @@ public class Utilities {
     }
 
 
-    public String TakePicture(Context context, Intent data, int nextid) {
+    public String SavePicture(Context context, Intent data, int nextid) {
 
         Uri selectedImageUri = data.getData();
 
@@ -111,58 +114,65 @@ public class Utilities {
 
         //Log.d("selectedImagePath Utilities Take Picture",selectedImagePath);
 
-        File folder = new File(Environment.getExternalStorageDirectory() + "/recipeimage");
+        File folder = new File(Environment.getExternalStorageDirectory().getAbsolutePath() +
+                "/recipeimages/");
         boolean success = true;
+
         if (!folder.exists()) {
             success = folder.mkdir();
         }
 
-        //int nextid = Integer.parseInt(dbRecept.getLastId()) + 1; //uzmi poslednji id recepta i dodaj 1
-        //zamena putanje
-        File from = new File(selectedImagePath);
-        File oldfile = new File(selectedImagePath);
-        File to = new File(Environment.getExternalStorageDirectory() + "/recipeimage/" + Integer.toString(nextid) + "recipe.jpg");
+        if (success) {
+            // Do something on success
 
-        from.renameTo(to);
+            //int nextid = Integer.parseInt(dbRecept.getLastId()) + 1; //uzmi poslednji id recepta i dodaj 1
+            //zamena putanje
+            File from = new File(selectedImagePath);
+            File oldfile = new File(selectedImagePath);
+            File to = new File(folder,Integer.toString(nextid) + "recipe.jpg");
 
-        //delete oldfile from gallery
-        try {
+            from.renameTo(to);
 
-            context.getContentResolver().delete(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                    MediaStore.Images.Media.DATA
-                            + "='"
-                            + oldfile.getPath()
-                            + "'", null);
-        } catch (Exception e) {
-            e.printStackTrace();
+            //delete oldfile from gallery
+           /* try {
+
+                context.getContentResolver().delete(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                        MediaStore.Images.Media.DATA
+                                + "='"
+                                + oldfile.getPath()
+                                + "'", null);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }*/
+
+            selectedImagePath = folder + Integer.toString(nextid) + "recipe.jpg";
+
+
+        } else {
+            // Do something else on failure
         }
-
-        selectedImagePath = Environment.getExternalStorageDirectory() + "/recipeimage/" + Integer.toString(nextid) + "recipe.jpg";
 
         return selectedImagePath;
     }
 
 
 
-    public String TakePicture(int nextid) {
-
-        //Uri selectedImageUri = data.getData();
+    public String SavePicture(int nextid) {
 
         String selectedImagePath = "";
 
-        //Log.d("selectedImagePath Utilities Take Picture",selectedImagePath);
-
-        File folder = new File(Environment.getExternalStorageDirectory() + "/recipeimage");
+        File folder = new File(Environment.getExternalStorageDirectory().getAbsolutePath() +"/recipeimages/");
         boolean success = true;
         if (!folder.exists()) {
             success = folder.mkdir();
         }
 
-        File to = new File(Environment.getExternalStorageDirectory() + "/recipeimage/" + Integer.toString(nextid) + "recipe.jpg");
+        File to = new File(folder,Integer.toString(nextid) + "recipe.jpg");
 
-        selectedImagePath = Environment.getExternalStorageDirectory() + "/recipeimage/" + Integer.toString(nextid) + "recipe.jpg";
+        selectedImagePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/recipeimages/" + Integer.toString(nextid) + "recipe.jpg";
 
         return selectedImagePath;
+
     }
 
 }

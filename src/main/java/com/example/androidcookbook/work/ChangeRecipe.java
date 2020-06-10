@@ -125,7 +125,7 @@ public class ChangeRecipe extends AppCompatActivity implements OnClickListener {
         addIgredientsBT = (Button) findViewById(R.id.add_ingrediens_bt);
         addDirectionsBT = (Button) findViewById(R.id.add_direction_of_recipe);
         addPhotoBT = (ImageView) findViewById(R.id.add_photo_bt);
-        addPhotoBT.setFocusable(false);
+        //addPhotoBT.setFocusable(false);
         //addPhotoBT.setRotation(90);
 
         addIgredientsBT.setText(getResources().getString(R.string.changeing));
@@ -148,7 +148,7 @@ public class ChangeRecipe extends AppCompatActivity implements OnClickListener {
 
         String picture = recipe.getPicture().toString();
         if (!picture.equals("No set image")) {
-            selectedImagePath = Environment.getExternalStorageDirectory() + "/recipeimage/" + recipe.getId().toString() + "recipe.jpg";
+            selectedImagePath = Environment.getExternalStorageDirectory() + "/recipeimages/" + recipe.getId().toString() + "recipe.jpg";
         } else {
             selectedImagePath = "No set image";
         }
@@ -202,7 +202,7 @@ public class ChangeRecipe extends AppCompatActivity implements OnClickListener {
                     Intent addIngIntent = new Intent(this, AddIngredientToRecipe.class);
 
                     if (resultIngredient.size() != 0) { //koristi se u slucaju lokalnih izmena u okviru aktivnosti
-                        Log.d("resultIngredient", "nije 0");
+                        //Log.d("resultIngredient", "nije 0");
                         addIngIntent.putParcelableArrayListExtra("corectentereding", resultIngredient);
 
                         addIngIntent.putStringArrayListExtra("corectenteredqu", resultIngredientQu);
@@ -301,10 +301,10 @@ public class ChangeRecipe extends AppCompatActivity implements OnClickListener {
     private void ShowImage(String selectedImagePath) throws IOException {
 
         if (selectedImagePath != "No set image") { //if not empty
-           Bitmap bitmap = utility.ShrinkBitmap(this,selectedImagePath);
+           Bitmap bitmap = utility.ShrinkBitmap(this, selectedImagePath);
 
-            //params.height = bitmap.getHeight();
-            //params.width = bitmap.getWidth();
+            params.height = bitmap.getHeight();
+            params.width = bitmap.getWidth();
             addPhotoBT.setImageBitmap(bitmap);
         } else {
 
@@ -346,7 +346,7 @@ public class ChangeRecipe extends AppCompatActivity implements OnClickListener {
 
         switch (item.getItemId()) {
 
-            case R.id.cnt_mnu_capture:
+          /*  case R.id.cnt_mnu_capture:
                 PackageManager pm = getPackageManager();
                 if (pm.hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
                     Intent i = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
@@ -356,7 +356,7 @@ public class ChangeRecipe extends AppCompatActivity implements OnClickListener {
                         Toast.makeText(getBaseContext(), "Camera is not available", Toast.LENGTH_LONG).show();
                     }
                 }
-                return true;
+                return true;*/
 
             case R.id.cnt_mnu_add_from_gallery:
 

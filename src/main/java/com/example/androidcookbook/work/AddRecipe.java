@@ -3,7 +3,9 @@ package com.example.androidcookbook.work;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Typeface;
@@ -32,6 +34,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.androidcookbook.MainActivity;
 import com.example.androidcookbook.R;
 import com.example.androidcookbook.mydb.IngredientsDB;
 import com.example.androidcookbook.mydb.MenuDB;
@@ -42,7 +45,9 @@ import com.example.androidcookbook.object.Recipe;
 import com.example.androidcookbook.object.RecipePrepare;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -92,6 +97,7 @@ public class AddRecipe extends AppCompatActivity implements OnClickListener {
     private LayoutParams params;
     private Intent data;
     private String lastid;
+    private ContentResolver cr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +105,8 @@ public class AddRecipe extends AppCompatActivity implements OnClickListener {
         setContentView(R.layout.add_recipes);
         addItemsOnSpinnerKategorija();
         addListenerOnSpinnerItemSelection();
+
+        cr = this.getContentResolver();
 
         data = new Intent();
         utility = new Utilities();
@@ -279,40 +287,26 @@ public class AddRecipe extends AppCompatActivity implements OnClickListener {
         if (requestCode == SELECT_PICTURE) { //from Gallery
             if (resultCode == RESULT_OK) {
 
-                selectedImagePath = utility.getPath(this, data.getData());
-                ContentResolver cr = this.getContentResolver();
-                Bitmap bitmap=null;
-                try {
-                    bitmap = MediaStore.Images.Media
-                            .getBitmap(cr, Uri.fromFile(new File(selectedImagePath)));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                try {
-                    Bitmap scaledBitmap = utility.ShrinkBitmap(this, bitmap);
-                    addPhotoBT.setImageBitmap(scaledBitmap);
-
-                } catch (Exception e) {
-                    Toast.makeText(this, "Failed to load", Toast.LENGTH_SHORT)
-                            .show();
+                Uri selectedImage = data.getData();
+                String[] filePathColumn = {MediaStore.Images.Media.DATA};
+                if (selectedImage != null) {
+                    Cursor cursor = getContentResolver().query(selectedImage,
+                            filePathColumn, null, null, null);
+                    if (cursor != null) {
+                        try {
+                            cursor.moveToFirst();
+                            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                            selectedImagePath = cursor.getString(columnIndex);
+                            Bitmap scaledBitmap = utility.ShrinkBitmap(this, selectedImagePath);
+                            addPhotoBT.setImageBitmap(scaledBitmap);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        cursor.close();
+                    }
                 }
             }
         }
-    }
-
-    private void ShowImage() {
-
-       /* Uri selectedImageUri = data.getData();
-        selectedImagePath = utility.getPath(this, selectedImageUri);
-        try {
-            Bitmap scaledBitmap = utility.ShrinkBitmap(this, selectedImagePath);
-            addPhotoBT.setImageBitmap(scaledBitmap);
-
-        } catch (Exception e) {
-            Toast.makeText(this, "Failed to load", Toast.LENGTH_SHORT)
-                    .show();
-        }*/
     }
 
     //ja bih ovo u Asynctask
@@ -330,28 +324,18 @@ public class AddRecipe extends AppCompatActivity implements OnClickListener {
     private void TakePicture() {
 
         int nextid;
-        //if (selectedImagePath != "") {
+
             if (dbRecept.getLastId().toString() != "") {
                 nextid = Integer.parseInt(dbRecept.getLastId()) + 1; //uzmi poslednji id recepta i dodaj 1
             } else {
                 nextid = 1;
             }
 
-            //ja bih ovo u AsyncTask
-
-        //Log.d("heeeej", String.valueOf(this.data.getData().getPath()));
-        //if(this.data.getData() == null){
         if(selectedImagePath == ""){
-            selectedImagePath = utility.TakePicture(nextid);
+            selectedImagePath = utility.SavePicture(nextid);
         } else {
-            selectedImagePath = utility.TakePicture(this, this.data, nextid);
+            selectedImagePath = utility.SavePicture(this, this.data, nextid);
         }
-
-
-
-        //} else {
-       //     selectedImagePath = getResources().getString(R.string.nosetimage);
-       // }
     }
 
     private void saveRecipeIngredients() {
@@ -371,19 +355,19 @@ public class AddRecipe extends AppCompatActivity implements OnClickListener {
 
     private void AddNewRecipe() {
 
-        Log.d("aaaaa", selectedImagePath); //ok
+       // Log.d("aaaaa", selectedImagePath); //ok
         if ("sr".equals(getString(R.string.lang))) {
             switch (kategorija) {
-                case "Doru�ak":
+                case "Doručak":
                     kategorija = "Breakfast";
                     break;
-                case "Ru�ak":
+                case "Ručak":
                     kategorija = "Lunch";
                     break;
-                case "Ve�era":
+                case "Večera":
                     kategorija = "Dinner";
                     break;
-                case "U�ina":
+                case "Užina":
                     kategorija = "Snack";
                     break;
                 case "Salata":
@@ -396,8 +380,11 @@ public class AddRecipe extends AppCompatActivity implements OnClickListener {
         }
 
         if (resultDirections == null) {
-            dbRecept.insertRecept(recipeET.getText().toString(), kategorija, "", selectedImagePath.toString());
+            dbRecept.insertRecept(recipeET.getText().toString(),
+                                    kategorija, "",
+                                    selectedImagePath.toString());
         } else {
+            Log.d("",selectedImagePath);
             dbRecept.insertRecept(recipeET.getText().toString(), kategorija, resultDirections.toString(), selectedImagePath.toString());
         }
 
@@ -472,7 +459,7 @@ public class AddRecipe extends AppCompatActivity implements OnClickListener {
 
         switch (item.getItemId()) {
 
-            case R.id.cnt_mnu_capture:
+           /* case R.id.cnt_mnu_capture:
                 PackageManager pm = getPackageManager();
                 if (pm.hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
                     Intent i = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
@@ -482,7 +469,7 @@ public class AddRecipe extends AppCompatActivity implements OnClickListener {
                         Toast.makeText(getBaseContext(), "Camera is not available!", Toast.LENGTH_LONG).show();
                     }
                 }
-                return true;
+                return true;*/
 
             case R.id.cnt_mnu_add_from_gallery:
 
