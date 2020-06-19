@@ -49,7 +49,7 @@ import java.util.List;
 public class SetWeeklyMenu extends AppCompatActivity implements OnItemSelectedListener, OnClickListener, OnCheckedChangeListener {
 
     private static String[] ColorForRow = null;
-    private RecipeDB dbRecept;
+   // private RecipeDB dbRecept;
     private MenuDB dbMenu;
 
     private ArrayList<Recipe> searchRecipes; //za prikazivanje po zadatom kriterijumu
@@ -61,6 +61,7 @@ public class SetWeeklyMenu extends AppCompatActivity implements OnItemSelectedLi
     private Spinner searchSpinner;
     private TableLayout tableview;
     private CheckBox chMon;
+
     private CheckBox chTue;
     private CheckBox chWen;
     private CheckBox chTur;
@@ -105,10 +106,8 @@ public class SetWeeklyMenu extends AppCompatActivity implements OnItemSelectedLi
     private int width;
     private String addingmeal;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.set_menu);
         tf = Typeface.createFromAsset(getAssets(), "fonts/quikhand.ttf");
@@ -140,11 +139,12 @@ public class SetWeeklyMenu extends AppCompatActivity implements OnItemSelectedLi
 
         searchSpinner = (Spinner) findViewById(R.id.searchspinner);
         ArrayAdapter<CharSequence> adapterspinner = ArrayAdapter.createFromResource(
-                this, R.array.category_arrays, android.R.layout.simple_spinner_item);
-
+                this, R.array.all_category_arrays, android.R.layout.simple_spinner_item);
 
         adapterspinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         searchSpinner.setAdapter(adapterspinner);
+        //searchSpinner.setSelection(0);
+        searchRecipes = dbRecipes.getAllRecipeByCategory("Breakfast");
         searchSpinner.setOnItemSelectedListener(this);
         bSearch.setOnClickListener(this);
     }
@@ -181,29 +181,27 @@ public class SetWeeklyMenu extends AppCompatActivity implements OnItemSelectedLi
 
         if ("sr".equals(getString(R.string.lang))) {
             switch (category) {
-                case "Doru�ak":
+                case "Doručak":
                     category = "Breakfast";
                     break;
-                case "Ru�ak":
+                case "Ručak":
                     category = "Lunch";
                     break;
-                case "Ve�era":
+                case "Večera":
                     category = "Dinner";
                     break;
-                case "U�ina":
+                case "Užina":
                     category = "Snack";
                     break;
             }
         }
-
 
         searchRecipes.clear();
         searchRecipes = dbRecipes.getAllRecipeByCategory(category);
         DrawTable();
     }
 
-
-    private void DrawTable() {
+    private boolean DrawTable() {
         acRecipe.setText("");
         tableview.removeAllViews();
 
@@ -218,6 +216,10 @@ public class SetWeeklyMenu extends AppCompatActivity implements OnItemSelectedLi
 
         setEnableDisable(); //ako je izmenjeno intuitivno, ne iz baze vec tokom rada
         int j = 0;
+        if(searchRecipes.isEmpty()){
+                Toast.makeText(this, "No recipes for category",Toast.LENGTH_SHORT).show();
+        }
+
         for (int i = 0; i < searchRecipes.size(); i++) {
 
             TextView tvNameOfRecipe = new TextView(this);
@@ -374,6 +376,7 @@ public class SetWeeklyMenu extends AppCompatActivity implements OnItemSelectedLi
 
             //change colors
             TableLayout tablerow = new TableLayout(this);
+
             j++;
             if (j != 7) {
                 tablerow.setBackgroundColor(Color.parseColor(ColorForRow[j]));
@@ -388,9 +391,7 @@ public class SetWeeklyMenu extends AppCompatActivity implements OnItemSelectedLi
             tablerow.addView(tRowCheckDay);
             tablerow.addView(tRowTextDay);
             height = tablerow.getHeight();
-
             //eight = tablerow.get;
-            //Log.d("row height",Integer.toString(height));
             tableview.addView(tablerow);
 
             if (hiderowintable != null) { //ako je odabran kriterijum pretrage po nazivu
@@ -415,15 +416,24 @@ public class SetWeeklyMenu extends AppCompatActivity implements OnItemSelectedLi
                 }
             }
         }
+        return true;
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.set_weekly_menu, menu);
-        return true;
+        MenuItem item_menu_uncheck_all = menu.findItem(R.id.menu_uncheck_all);
+        MenuItem item_menu_save = menu.findItem(R.id.menu_save);
 
+   /*     if(searchRecipes.isEmpty()){
+            item_menu_uncheck_all.setVisible(false);
+            item_menu_save.setVisible(false);
+    } else {
+        item_menu_uncheck_all.setVisible(true);
+        item_menu_save.setVisible(true);
+    }*/
+        return true;
     }
 
     @Override
@@ -435,17 +445,14 @@ public class SetWeeklyMenu extends AppCompatActivity implements OnItemSelectedLi
                 for (int j = 0; j < rec_ids.size(); j++) {
                     dbMenu.updateMenu(rec_ids.get(j).toString(), days.get(j).toString(), checked.get(j).toString(), null);
                 }
-
-                Intent reopenShowWeeklyMenuIntent1 = new Intent(this, ShowWeeklyMenu.class);
-                startActivity(reopenShowWeeklyMenuIntent1);
-                this.finish();
-                return true;
+               Intent reopenShowWeeklyMenuIntent1 = new Intent(this, ShowWeeklyMenu.class);
+               startActivity(reopenShowWeeklyMenuIntent1);
+               finish();
+               return true;
 
             case R.id.menu_cancel:
-                Intent reopenShowWeeklyMenuIntent2 = new Intent(this, ShowWeeklyMenu.class);
-                startActivity(reopenShowWeeklyMenuIntent2);
-                this.finish();
-                return true;
+               this.onBackPressed();
+               return true;
 
             case R.id.menu_uncheck_all:
                 for (int j = 0; j < searchRecipes.size(); j++) {
@@ -463,7 +470,6 @@ public class SetWeeklyMenu extends AppCompatActivity implements OnItemSelectedLi
             default:
                 return super.onOptionsItemSelected(item);
         }
-
     }
 
     private void setIfDinamicalyCheckedUnchecked(int i, String day) {
@@ -549,7 +555,6 @@ public class SetWeeklyMenu extends AppCompatActivity implements OnItemSelectedLi
             default:
                 break;
         }
-
     }
 
     private void setEnableDisable() {
@@ -650,9 +655,7 @@ public class SetWeeklyMenu extends AppCompatActivity implements OnItemSelectedLi
 
             }
         }
-
         DrawTable();
-
     }
 
 
@@ -702,15 +705,12 @@ public class SetWeeklyMenu extends AppCompatActivity implements OnItemSelectedLi
                 acRecipe.setText("");
 
             }
-
             DrawTable();
-
         }
     }
 
     @Override
     protected void onDestroy() {
-        // TODO Auto-generated method stub
         super.onDestroy();
         if (dbMenu.getDb() != null) {
             dbMenu.getDb().close();
@@ -722,8 +722,11 @@ public class SetWeeklyMenu extends AppCompatActivity implements OnItemSelectedLi
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-        // TODO Auto-generated method stub
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

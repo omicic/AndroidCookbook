@@ -8,5 +8,5 @@
         android:title="Save"></item>
     <item
         android:id="@+id/menu_cancel"
-        android:title="Cancel"></item>
+        android:title="Back"></item>
 </menu>

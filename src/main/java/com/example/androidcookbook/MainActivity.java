@@ -4,6 +4,8 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.DialogFragment;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -20,9 +22,12 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -81,13 +86,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ArrayList<String> alfs;
 
     private int size;
-   //private int sizee;
+    private Context context;
+    //private int sizee;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        context = this;
         starterIntent = getIntent();
 
         tf = Typeface.createFromAsset(getAssets(), "fonts/quikhand.ttf");
@@ -124,8 +131,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (ingdb.getAllIngredients().size() == 0) {
                     getIngredeitnsFromAsset();
                 }
-
-                ibFindRecipes.setOnClickListener(this);
+                //ibFindRecipes.setOnClickListener(this);
             }
         } else {
             // continue with your code
@@ -143,8 +149,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (ingdb.getAllIngredients().size() == 0) {
                 getIngredeitnsFromAsset();
             }
-            ibFindRecipes.setOnClickListener(this);
+            //ibFindRecipes.setOnClickListener(this);
         }
+
+        ibFindRecipes.setOnClickListener(this);
     }
 
     @Override
@@ -292,68 +300,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private class FindSticky extends AsyncTask<ArrayList<Recipe>, Void, ArrayList<String>> {
-
-        private ArrayList<Recipe> recarray;
-        private ArrayList<String> recidforshowingsticky;
-        private SharedPreferences pref;
-
-        @Override
-        protected ArrayList<String> doInBackground(ArrayList<Recipe>... recipes) {
-
-            recarray = recipes[0];
-            recidforshowingsticky = new ArrayList<String>();
-            recidforshowingsticky.clear();
-
-            int i = 0;
-            for (int j = 0; j < recarray.size(); j++) {
-                //Log.d("a ovo","");
-                pref = getSharedPreferences("Note" + recarray.get(j).getId().toString(), getApplicationContext().MODE_PRIVATE);
-                size = pref.getInt("size", -1); //ako postoji uzme size, a ako ne -1
-
-                if (size != -1) {
-                    i++;
-                    recidforshowingsticky.add(recarray.get(j).getId().toString());
-                }
-            }
-            return recidforshowingsticky;
-        }
-
-        @Override
-        protected void onPostExecute(ArrayList<String> result) {
-            // TODO Auto-generated method stub
-            super.onPostExecute(result);
-        }
-    }
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.main_menu, menu);
-
-
-        //DOESN'T WORK**********************************************************************
-
-        //for hide or show item in menu list
-      /*  ingredientDB = new IngredientsDB(this);
-
-
-       /* if (ingredientDB.getAllIngredients().size() == 0) {
-            menu.findItem(R.id.menu_show_ingredients).setEnabled(false);
-        } else {
-            menu.findItem(R.id.menu_show_ingredients).setEnabled(true);
-        }
-        ingredientDB.getDb().close();
-
-        recipeDB = new RecipeDB(this);
-        if (recipeDB.getAllRecepte().size() == 0) {
-            menu.findItem(R.id.menu_show_recipe).setEnabled(false);
-        } else {
-            menu.findItem(R.id.menu_show_recipe).setEnabled(true);
-        }
-        recipeDB.getDb().close();*/
-
         return true;
     }
 
@@ -392,20 +342,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.createbackup:
                 try {
-                    exportrestoreDB("/data/data/com.cook.androidcookery/databases/cookeryDB", Environment.getExternalStorageDirectory() + "/database_copy_cookeryDB");
+                    exportrestoreDB("/data/data/com.example.androidcookbook/databases/cookeryDB", Environment.getExternalStorageDirectory() + "/database_copy_cookeryDB");
+                    Toast.makeText(this, "Backup is created", Toast.LENGTH_SHORT).show();
                 } catch (IOException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
                 return true;
 
             case R.id.restore:
                 try {
-                    exportrestoreDB(Environment.getExternalStorageDirectory() + "/database_copy_cookeryDB", "/data/data/com.cook.androidcookery/databases/cookeryDB");
+                    exportrestoreDB(Environment.getExternalStorageDirectory() + "/database_copy_cookeryDB", "/data/data/com.example.androidcookbook/databases/cookeryDB");
+                    Toast.makeText(this, "Restore is done", Toast.LENGTH_SHORT).show();
                     finish();
                     startActivity(starterIntent);
                 } catch (IOException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
                 return true;
@@ -449,12 +399,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return super.onSearchRequested();
     }
 
+
     @SuppressLint("ResourceType")
     @Override
     public void onClick(View v) {
 
         if (v.getId() == R.id.ibFindRecipes) {
-            onCreateDialog();
+            PopupMenu popup = new PopupMenu(super.getApplicationContext(), v);
+            popup.getMenuInflater()
+                    .inflate(R.menu.find_menu, popup.getMenu());
+
+            popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                public boolean onMenuItemClick(MenuItem item) {
+                    if (item.getTitle().equals("Ingredients...")) {
+                        Intent intentFindRecipes = new Intent(MainActivity.this, FindRecipes.class);
+                        startActivity(intentFindRecipes);
+                    }
+
+                    if (item.getTitle().equals("Recipes...")) {
+                        Intent intentFindRecipesbyIngs = new Intent(MainActivity.this, ShowListOfRecipe.class);
+                        startActivity(intentFindRecipesbyIngs);
+                    }
+                    return true;
+                }
+            });
+
+            popup.show(); //showing popup menu*/
+
         }
 
         if (v.getId() == 3) { //dugme stikija
@@ -468,31 +439,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //intentShowNoteForAll.putExtra("recidsticky", v.getTag().toString());
             startActivity(intentShowNoteForAll);
         }
-    }
-
-    public Dialog onCreateDialog() {
-
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
-        alertDialogBuilder.setCancelable(true);
-        alertDialogBuilder.setTitle("Search by...")
-                .setItems(R.array.find_array, new DialogInterface.OnClickListener() {
-
-                    public void onClick(DialogInterface dialog, int which) {
-                        if (which == 0) {
-                            Intent intentFindRecipes = new Intent(MainActivity.this, FindRecipes.class);
-                            startActivity(intentFindRecipes);
-                        }
-                        if (which == 1) {
-                            Intent intentFindRecipesbyIngs = new Intent(MainActivity.this, ShowListOfRecipe.class);
-                            startActivity(intentFindRecipesbyIngs);
-                        }
-                    }
-                });
-
-        dialog = alertDialogBuilder.create();
-        dialog.show();
-        return dialog;
-
     }
 
     @Override
@@ -515,6 +461,42 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         takemanuForDay();
         invalidateOptionsMenu();
+    }
+
+//Inner class
+
+    private class FindSticky extends AsyncTask<ArrayList<Recipe>, Void, ArrayList<String>> {
+
+        private ArrayList<Recipe> recarray;
+        private ArrayList<String> recidforshowingsticky;
+        private SharedPreferences pref;
+
+        @Override
+        protected ArrayList<String> doInBackground(ArrayList<Recipe>... recipes) {
+
+            recarray = recipes[0];
+            recidforshowingsticky = new ArrayList<String>();
+            recidforshowingsticky.clear();
+
+            int i = 0;
+            for (int j = 0; j < recarray.size(); j++) {
+                //Log.d("a ovo","");
+                pref = getSharedPreferences("Note" + recarray.get(j).getId().toString(), getApplicationContext().MODE_PRIVATE);
+                size = pref.getInt("size", -1); //ako postoji uzme size, a ako ne -1
+
+                if (size != -1) {
+                    i++;
+                    recidforshowingsticky.add(recarray.get(j).getId().toString());
+                }
+            }
+            return recidforshowingsticky;
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<String> result) {
+            // TODO Auto-generated method stub
+            super.onPostExecute(result);
+        }
     }
 
 }

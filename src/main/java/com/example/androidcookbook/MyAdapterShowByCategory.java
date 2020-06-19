@@ -174,11 +174,8 @@ public class MyAdapterShowByCategory extends BaseAdapter implements OnCheckedCha
                 }
             }
         }
-
-
 //sta kada nemamo kombinaciju recid + day u menudb????
     }
-
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -271,7 +268,6 @@ public class MyAdapterShowByCategory extends BaseAdapter implements OnCheckedCha
 
     @Override
     public int getCount() {
-        // TODO Auto-generated method stub
         return searchRecipes.size();
     }
 
@@ -282,7 +278,6 @@ public class MyAdapterShowByCategory extends BaseAdapter implements OnCheckedCha
 
     @Override
     public long getItemId(int position) {
-        // TODO Auto-generated method stub
         return position;
     }
 

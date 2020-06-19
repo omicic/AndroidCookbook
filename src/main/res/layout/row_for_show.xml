@@ -3,7 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:background="@android:drawable/divider_horizontal_bright">
+    android:background="@android:drawable/divider_horizontal_bright"
     android:layout_marginTop="5sp"
     android:weightSum="6">
 

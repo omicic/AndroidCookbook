@@ -47,20 +47,37 @@
     <string name="restore">Restore...</string>
     <string name="ingexist">Ingredient already exist!</string>
 
+    <string-array name="category_arrays_main_meal">
+        <item>Breakfast</item>
+        <item>Lunch</item>
+        <item>Dinner</item>
+    </string-array>
+
     <string-array name="category_arrays">
+        <item>All</item>
+        <item>Starter</item>
         <item>Breakfast</item>
         <item>Lunch</item>
         <item>Dinner</item>
         <item>Snack</item>
+
+        <item>Salad</item>
+        <item>Dessert</item>
     </string-array>
 
     <string-array name="all_category_arrays" >
         <item>Breakfast</item>
         <item>Lunch</item>
         <item>Dinner</item>
+        <item>Starter</item>
         <item>Snack</item>
         <item>Salad</item>
         <item>Dessert</item>
+    </string-array>
+
+    <string-array name="find_array">
+        <item>...ingredients</item>
+        <item>...name of recipes</item>
     </string-array>
 
     <string name="m_check">m_check</string>

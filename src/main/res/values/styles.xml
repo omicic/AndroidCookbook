@@ -32,7 +32,14 @@
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+
     </style>
+
+    <style name="PopupMenu" parent="Theme.AppCompat.Light">
+        <item name="android:popupBackground">@android:color/holo_orange_light</item>
+    </style>
+
+
 
 
 </resources>

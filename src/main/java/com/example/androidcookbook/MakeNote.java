@@ -54,7 +54,6 @@ public class MakeNote extends AppCompatActivity implements OnClickListener {
     private LinearLayout llmakenote;
     private Button ibok;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -65,7 +64,8 @@ public class MakeNote extends AppCompatActivity implements OnClickListener {
         tf = Typeface.createFromAsset(getAssets(), "fonts/quikhand.ttf");
         llmakenote = (LinearLayout) this.findViewById(R.id.llmakenote);
         ScrollView scrollview = (ScrollView) findViewById(R.id.scviewmakenote);
-        scrollview.setBackgroundResource(R.drawable.sticky);
+        //scrollview.setBackgroundResource(R.drawable.sticky);
+
         ingdb = new IngredientsDB(this);
         recdb = new RecipeDB(this);
         recing = new RecipeIngredientsDB(this);
@@ -85,11 +85,10 @@ public class MakeNote extends AppCompatActivity implements OnClickListener {
         tvRecipe.setId(Integer.parseInt(getIntent().getExtras().get("rec_id").toString()));
 
         tvRecipe.setTypeface(tf);
-        //tvRecipe.setTextColor(color.blue);
+        tvRecipe.setTextColor(Color.BLUE);
 
         String recipe = recdb.getRecepteById(getIntent().getExtras().get("rec_id").toString()).getRecipe();
-        tvRecipe.setText(recipe.toString());
-
+        tvRecipe.setText("For: " + recipe.toString());
 
         //prikazivanje preostalih sastojaka koji nisu zadati a potrebni su za pripremu jela
         postoji = false;
@@ -119,7 +118,6 @@ public class MakeNote extends AppCompatActivity implements OnClickListener {
                 ingtofind = ingredientstobuy.get(i).toString();
                 qutofind = quantitiestobuy.get(i).toString();
                 ing = ingdb.getIngredientById(ingtofind);
-                Log.d("qutofind", qutofind);
                 if (Float.parseFloat(qutofind) > 0) {
 
                     //-------TREBA PUNITI NIZ KOJI CE SE SNIMITI U SHAREDPREFER
@@ -153,7 +151,7 @@ public class MakeNote extends AppCompatActivity implements OnClickListener {
         ibok = new Button(this);
         ibok.setBackgroundResource(R.drawable.selectormakenoteicon);
         ibok.setOnClickListener(this);
-        LinearLayout.LayoutParams lpp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
+        LinearLayout.LayoutParams lpp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         lpp.gravity = Gravity.RIGHT;
         ibok.setLayoutParams(lpp);
         llmakenote.addView(ibok);
@@ -162,7 +160,7 @@ public class MakeNote extends AppCompatActivity implements OnClickListener {
     private void insertTextView(String ing, String qu, String mu) {
 
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
-        lp.setMargins(30, 5, 0, 0);
+        lp.setMargins(40, 10, 0, 0);
         if (Float.parseFloat(qu) > 0) {
 
             TextView tvIng = new TextView(this);
@@ -171,7 +169,7 @@ public class MakeNote extends AppCompatActivity implements OnClickListener {
             tvIng.setTextSize(20);
             tvIng.setTypeface(tf);
             tvIng.setLayoutParams(lp);
-            tvIng.setText(" -" + ing + ",  " + qu + " " + mu);
+            tvIng.setText(" - " + ing + ",  " + qu + " " + mu);
 
             llmakenote.addView(tvIng);
 

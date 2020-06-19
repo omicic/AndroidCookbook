@@ -34,21 +34,37 @@
 
     </LinearLayout>
 
-    <CheckBox
-        android:id="@+id/cbAll"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/llcheckbox"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/llheader"
-        android:paddingRight="1sp"
-        android:textColor="@color/cigla"
-        android:text="@string/all_check"
-        android:textSize="10sp"></CheckBox>
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/cbAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="1sp"
+            android:textColor="@color/cigla"
+            android:text="@string/all_check"
+            android:textSize="10sp"
+            android:layout_weight="0.1">
+        </CheckBox>
+
+        <Spinner
+            android:id="@+id/categoryspinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right" />
+
+    </LinearLayout>
 
     <ListView
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:choiceMode="multipleChoiceModal"
-        android:layout_below="@+id/cbAll"
+        android:layout_below="@+id/llcheckbox"
         android:focusable="false"></ListView>
 </RelativeLayout>

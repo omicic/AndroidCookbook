@@ -93,6 +93,8 @@ public class RecipeMenu implements Parcelable {
         this.check = check;
     }
 
+
+
     public static final Creator CREATOR = new Creator() {
 
         @Override

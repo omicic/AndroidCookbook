@@ -17,6 +17,9 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.androidcookbook.MainActivity;
 import com.example.androidcookbook.R;
@@ -33,7 +36,7 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 
-public class MakeNoteForAll extends Activity implements OnClickListener {
+public class MakeNoteForAll extends AppCompatActivity implements OnClickListener {
 
     private IngredientsDB ingdb;
     private RecipeIngredientsDB recing;
@@ -64,7 +67,6 @@ public class MakeNoteForAll extends Activity implements OnClickListener {
     private ArrayList<Recipe> recipes;
     private ArrayList<Ingredient> ingredients;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -93,7 +95,6 @@ public class MakeNoteForAll extends Activity implements OnClickListener {
         arrayForSharedPrefIng = new ArrayList<String>();
         arrayForSharedPrefQu = new ArrayList<String>();
         arrayForSharedPrefMu = new ArrayList<String>();
-
         recipesmenu = recmenudb.getAllMenu();
 
         async = new AsyncTaskMakeNoteForAll().execute(recipesmenu);
@@ -103,39 +104,47 @@ public class MakeNoteForAll extends Activity implements OnClickListener {
             e.printStackTrace();
         }
 
-        recclone.clear();
-        recclone.add(recings.get(0));
+        if(recings.size()!=0) {
+            recclone.clear();
+            recclone.add(recings.get(0));
 
-        for (int m = 1; m < recings.size(); m++) {
-            boolean existinrecclone = false;
-            for (int n = 0; n < recclone.size(); n++) { //u okviru recclone ispituje da li postoji ista namirnica, ako postoji dodaje kolicinu
-                if (recings.get(m).getIng_id().equals(recclone.get(n).getIng_id())) {
-                    existinrecclone = true;
-                    int suma = Integer.parseInt(recings.get(m).getIng_qu()) + Integer.parseInt(recclone.get(n).getIng_qu());
-                    RecipePrepare rpforadd = new RecipePrepare();
-                    rpforadd.setId(recings.get(m).getId());
-                    rpforadd.setIng_id(recings.get(m).getIng_id());
-                    rpforadd.setIng_qu(Integer.toString(suma));
-                    rpforadd.setRec_id(recings.get(m).getRec_id());
-                    recclone.set(n, rpforadd);
+            for (int m = 1; m < recings.size(); m++) {
+                boolean existinrecclone = false;
+                for (int n = 0; n < recclone.size(); n++) { //u okviru recclone ispituje da li postoji ista namirnica, ako postoji dodaje kolicinu
+                    if (recings.get(m).getIng_id().equals(recclone.get(n).getIng_id())) {
+                        existinrecclone = true;
+                        int suma = Integer.parseInt(recings.get(m).getIng_qu()) + Integer.parseInt(recclone.get(n).getIng_qu());
+                        RecipePrepare rpforadd = new RecipePrepare();
+                        rpforadd.setId(recings.get(m).getId());
+                        rpforadd.setIng_id(recings.get(m).getIng_id());
+                        rpforadd.setIng_qu(Integer.toString(suma));
+                        rpforadd.setRec_id(recings.get(m).getRec_id());
+                        recclone.set(n, rpforadd);
+                    }
+                }
+
+                //ako ne postoji i nije prvi onda uzmi sledecu namirnicu
+                if (!existinrecclone) {
+                    recclone.add(recings.get(m));
                 }
             }
 
-            //ako ne postoji i nije prvi onda uzmi sledecu namirnicu
-            if (!existinrecclone) {
-                recclone.add(recings.get(m));
-            }
+            insertTextView();
+
+            ibok = new Button(this);
+            ibok.setBackgroundResource(R.drawable.selectormakenoteicon);
+            ibok.setOnClickListener(this);
+            LinearLayout.LayoutParams lpp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
+            lpp.gravity = Gravity.RIGHT;
+            ibok.setLayoutParams(lpp);
+            llmakenote.addView(ibok);
+
+        } else {
+            Toast.makeText(this, "No ingredients for making note", Toast.LENGTH_SHORT).show();
+            finish();
         }
 
-        insertTextView();
 
-        ibok = new Button(this);
-        ibok.setBackgroundResource(R.drawable.selectormakenoteicon);
-        ibok.setOnClickListener(this);
-        LinearLayout.LayoutParams lpp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
-        lpp.gravity = Gravity.RIGHT;
-        ibok.setLayoutParams(lpp);
-        llmakenote.addView(ibok);
     }
 
     private class AsyncTaskMakeNoteForAll extends AsyncTask<ArrayList<RecipeMenu>, Void, ArrayList<RecipePrepare>> {

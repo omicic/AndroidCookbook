@@ -1,5 +1,6 @@
 package com.example.androidcookbook;
 
+import android.annotation.SuppressLint;
 import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
 import android.content.SharedPreferences;
@@ -20,6 +21,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import java.io.File;
 import java.util.ArrayList;
 
@@ -27,14 +30,18 @@ public class ShowNoteForAll extends Activity implements OnClickListener, OnCheck
 
     private SharedPreferences preferences;
     private Typeface tf;
-    private LinearLayout llnote;
+
     private ImageButton ibok;
     private int padding;
     private int size;
     private LinearLayout lltextviewandcheckbos;
+    private LinearLayout llforokbutton;
+    private LinearLayout llheader;
+    private LinearLayout llnote;
+
     private ArrayList<String> checked;
     private Editor editor;
-    private LinearLayout llheader;
+
     private String[] ColorForRow;
 
 
@@ -44,7 +51,7 @@ public class ShowNoteForAll extends Activity implements OnClickListener, OnCheck
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.row_ingredients);
 
-        ColorForRow = new String[]{"#b1d2b0", "#cedbbc", "#eee5b3", "#e3d2c0", "#e7b59e", "#b1d2b0", "#cedbbc"};
+        ColorForRow = new String[]{"#faf9a4", "#fcfcf1"};//, "#fefdd8", "#fcfcf1", "#fefdd8", "#fcfcf1"};
         tf = Typeface.createFromAsset(getAssets(), "fonts/quikhand.ttf");
         llheader = (LinearLayout) this.findViewById(R.id.llstickyheader);
         llnote = (LinearLayout) this.findViewById(R.id.llmakenote);
@@ -62,6 +69,7 @@ public class ShowNoteForAll extends Activity implements OnClickListener, OnCheck
     }
 
 
+    @SuppressLint("ResourceType")
     private void ShowNote() {
 
         int l = 1;
@@ -82,7 +90,7 @@ public class ShowNoteForAll extends Activity implements OnClickListener, OnCheck
         lpib.gravity = Gravity.RIGHT;
 
         llnote.setVisibility(View.VISIBLE);
-        llnote.setBackgroundResource(R.drawable.sticky);
+        //llnote.setBackgroundResource(R.drawable.sticky);
 
         llparam.setMargins(10, 5, 0, 5);
 
@@ -95,20 +103,20 @@ public class ShowNoteForAll extends Activity implements OnClickListener, OnCheck
 
             lltextviewandcheckbos = new LinearLayout(this);
             lltextviewandcheckbos.setOrientation(LinearLayout.HORIZONTAL);
+            //lltextviewandcheckbos.setAlpha((float) 0.4);
             lltextviewandcheckbos.setId(size);
 
-            if (m < 7) {
-                lltextviewandcheckbos.setBackgroundColor(Color.parseColor(ColorForRow[m]));
-                m++;
+            if (m == 0) {
+                lltextviewandcheckbos.setBackgroundColor(Color.parseColor(ColorForRow[0]));
+                m=1;
             } else {
+                lltextviewandcheckbos.setBackgroundColor(Color.parseColor(ColorForRow[1]));
                 m = 0;
             }
 
             TextView tvingnote = new TextView(this);
-
             tvingnote.setTextSize(20);
             tvingnote.setId(i);
-            //tvingnote.setTextColor(color/blue);
             tvingnote.setTypeface(tf);
             tvingnote.setTextColor(Color.parseColor("#2E2EB8"));
             tvingnote.setPadding(padding, 10, 0, 0);
@@ -128,31 +136,20 @@ public class ShowNoteForAll extends Activity implements OnClickListener, OnCheck
             lltextviewandcheckbos.addView(tvingnote);
             lltextviewandcheckbos.addView(cb);
 
-
             llnote.addView(lltextviewandcheckbos);
 
         }
-
-        ibok = new ImageButton(this);
-        ibok.setBackgroundColor(Color.TRANSPARENT);
-        ibok.setImageResource(R.drawable.selectormakenoteicon);
-        ibok.setId(-3);
-        LinearLayout.LayoutParams lpp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
-        lpp.gravity = Gravity.RIGHT;
-        ibok.setOnClickListener(this);
-        llnote.addView(ibok);
-
     }
 
-
+    @SuppressLint("ResourceType")
     @Override
     public void onClick(View v) {
 
-        //preferences = this.getSharedPreferences("WeeklyShoppingList", this.MODE_PRIVATE);
+        preferences = this.getSharedPreferences("WeeklyShoppingList", this.MODE_PRIVATE);
 
         if (v.getId() == R.id.ibdelete) { //delete
             preferences.edit().clear().commit();
-            File file = new File("/data/data/com.cook.androidcookery/shared_prefs/WeeklyShoppingList.xml");
+            File file = new File("/data/data/com.example.androidcookbook/shared_prefs/WeeklyShoppingList.xml");
             if (file.exists()) {
                 file.delete();
             }
@@ -174,22 +171,19 @@ public class ShowNoteForAll extends Activity implements OnClickListener, OnCheck
         }
     }
 
+    @SuppressLint("ResourceType")
     @Override
     public void onCheckedChanged(CompoundButton cb, boolean check) {
+        checked.set(cb.getId()-1, Boolean.toString(check));
 
-
-        Log.d("cb index", Integer.toString(cb.getId() - 1));
-        Log.d("cb checked", Boolean.toString(check));
-        // if(cb.getId()-1 > size){
-
-        checked.set(cb.getId() - 1, Boolean.toString(check));
-
-        // }
+        String checkk = "checked" + Integer.toString(cb.getId()-1);
+        preferences.edit().putBoolean(checkk, check);;
+        //editor.commit();
     }
 
     @Override
     public void onBackPressed() {
-        // TODO Auto-generated method stub
+        preferences.edit().commit();
         super.onBackPressed();
         this.finish();
     }
@@ -197,10 +191,6 @@ public class ShowNoteForAll extends Activity implements OnClickListener, OnCheck
     @Override
     protected void onResume() {
         super.onResume();
-
-        //preferences = this.getSharedPreferences("WeeklyShoppingList", this.MODE_PRIVATE);
-        //ShowNote();
-
     }
 
 }

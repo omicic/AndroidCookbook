@@ -8,6 +8,7 @@ import android.text.InputType;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
@@ -20,6 +21,7 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,6 +37,8 @@ import com.example.androidcookbook.object.RecipePrepare;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.BitSet;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -44,8 +48,6 @@ import java.util.Map.Entry;
 public class ShowListOfRecipe extends AppCompatActivity implements OnCheckedChangeListener, OnClickListener {
 
     private ListView listView;
-    private ImageButton closeBT;
-    private Menu findedrecipes;
     private CheckBox cbAll;
 
     private RecipeDB receptDB;
@@ -54,7 +56,6 @@ public class ShowListOfRecipe extends AppCompatActivity implements OnCheckedChan
 
     private MyAdapterPrikazRecepata listOfShowedRecept;
 
-    private String queryy;
 
     private ArrayList<Recipe> selectedRecipe;
     private ArrayList<String> cbtag;
@@ -88,10 +89,13 @@ public class ShowListOfRecipe extends AppCompatActivity implements OnCheckedChan
     private File file;
     private Recipe deletedrecipe;
     private boolean emtylistforsearch;
-    private MyAdapterPrikazRecepata showRecipeslist;
-    private String addingmealbundle;
-    private String categorybundle;
-    private Bundle bundle;
+
+
+    private Spinner searchSpinnerForCategory;
+    private String cat;//from spinner
+    private String categoryForSpinner;
+    private boolean firstEventConsumed;
+    private boolean isUserAction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +109,7 @@ public class ShowListOfRecipe extends AppCompatActivity implements OnCheckedChan
         cbAll = (CheckBox) findViewById(R.id.cbAll);
 
         searchRecipe = (AutoCompleteTextView) findViewById(R.id.acIngredients);
+
         //searchRecipe.setHint("Recipe...");
         bSearch = (ImageButton) findViewById(R.id.bSearch);
         bClearSelection = (ImageButton) findViewById(R.id.bClearSelection);
@@ -140,7 +145,7 @@ public class ShowListOfRecipe extends AppCompatActivity implements OnCheckedChan
         br = 0;
 
         AddIngrAutoCompleteTV();
-
+       // Log.d("addingmeal", getIntent().getStringExtra("addingmeal"));
         postaviAdapter(); //razlicit jer se poziva iz vise klasa
 
         listView.setItemsCanFocus(false);
@@ -154,6 +159,36 @@ public class ShowListOfRecipe extends AppCompatActivity implements OnCheckedChan
         bClearSelection.setOnClickListener(this);
         cbAll.setOnCheckedChangeListener(this);
 
+        categoryForSpinner = "";
+        searchSpinnerForCategory = (Spinner) findViewById(R.id.categoryspinner);
+        ArrayAdapter<CharSequence> adapterspinner = ArrayAdapter.createFromResource(
+                this, R.array.category_arrays, android.R.layout.simple_spinner_item);
+
+        adapterspinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        searchSpinnerForCategory.setAdapter(adapterspinner);
+        searchSpinnerForCategory.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                isUserAction = true;
+                return false;
+            }
+        });
+
+        searchSpinnerForCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (isUserAction) {
+                   cat = parent.getItemAtPosition(position).toString();
+                   setAdapterr(cat);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     private void AddIngrAutoCompleteTV() {
@@ -193,6 +228,8 @@ public class ShowListOfRecipe extends AppCompatActivity implements OnCheckedChan
 
         if (v.getId() == R.id.bClearSelection) {
             searchRecipe.setText("");
+            searchSpinnerForCategory.setVisibility(View.VISIBLE);
+            searchSpinnerForCategory.setSelection(0);
             listOfShowedRecept = new MyAdapterPrikazRecepata(this, searchRecipe.getText().toString(), receptDB);
             listView.setAdapter(listOfShowedRecept);
             mgr.hideSoftInputFromWindow(bClearSelection.getWindowToken(), 0); //hide keyboard
@@ -201,29 +238,50 @@ public class ShowListOfRecipe extends AppCompatActivity implements OnCheckedChan
         if (v.getId() == R.id.bSearch) {
             listOfShowedRecept = new MyAdapterPrikazRecepata(this, searchRecipe.getText().toString(), receptDB);
             listView.setAdapter(listOfShowedRecept);
+            searchSpinnerForCategory.setVisibility(View.INVISIBLE);
             mgr.hideSoftInputFromWindow(bSearch.getWindowToken(), 0);  //hide keyboard
         }
     }
 
     private void postaviAdapter() {
-
         //kada startujemo iz FindRecipes.class, prosledjujemo sve namirnice koje imamo i kolicine
         if (getIntent().getParcelableArrayListExtra("findI") != null) {
             FindRecipes();
         } else {
             if (getIntent().getStringExtra("addingmeal") != null) { //from ShowWeeklyMenu.class
-                if (addingmealbundle == null) { //if not restore activity
-                    setAdapterForCategory(getIntent().getStringExtra("addingmeal").toString(), getIntent().getStringExtra("category"));
-                } else {
-                    setAdapterForCategory(addingmealbundle, categorybundle);
-                }
+                cat = getIntent().getStringExtra("addingmeal");
+                setAdapterr(cat);
             } else {
-                setAdapterr("");
+                setAdapterr("");//from AddRecipe.class
             }
         }
     }
 
-    //koristi se za pronala�enje recepata za zadate namirnice
+    private void setAdapterForCategory(String string, String category) {//for ShowWeeklyMenu.class
+
+        listOfShowedRecept = new MyAdapterPrikazRecepata(this,
+                string, category, receptDB, checkedAll);
+        listView.setAdapter(listOfShowedRecept);
+
+    }
+
+    private void setAdapterr(String cat) {//if cat (category from spinner) is not set or is set
+        if (cat == "") {
+            listOfShowedRecept = new MyAdapterPrikazRecepata(this, null,
+                    true, null, null,
+                    null, null, receptDB, checkedAll);
+            listView.setAdapter(listOfShowedRecept);
+
+        } else { //da li se igde koristi? ShowListOfRecipe showListOfRecipes,
+            listOfShowedRecept = new MyAdapterPrikazRecepata(this, null, cat, receptDB,checkedAll);
+            listView.setAdapter(listOfShowedRecept);
+            categoryForSpinner = cat;
+        }
+    }
+
+
+
+    //koristi se za pronalaženje recepata za zadate namirnice
     private void FindRecipes() {
 
         frIngredients = getIntent().getParcelableArrayListExtra("findI"); //from FindRecipes.class
@@ -238,9 +296,7 @@ public class ShowListOfRecipe extends AppCompatActivity implements OnCheckedChan
             if (frQu.get(f).toString().equals("0")) {
                 y = 0;
             } else {
-
                 y = Float.parseFloat(frQu.get(f).toString());
-
             }
 
             for (int r = 0; r < allRecipeIng.size(); r++) {
@@ -254,7 +310,6 @@ public class ShowListOfRecipe extends AppCompatActivity implements OnCheckedChan
                     x = Float.parseFloat(allRecipeIng.get(r).getIng_qu().toString());
                     diffqu = x - y;
 
-                    //Log.d("Integer.toString(diffqu)",Integer.toString(diffqu));
                     diffques.add(Float.toString(diffqu));
                 }
             }
@@ -277,9 +332,7 @@ public class ShowListOfRecipe extends AppCompatActivity implements OnCheckedChan
                     j++;
                 }
 
-                Log.d("br", Integer.toString(br));
                 if (!Integer.toString(br).equals("0")) {
-                    //Log.d("a ovde sta se desava" +n, temprecipes.get(n).toString() + ", " + Integer.toString(br));
                     recipeidforfindRecipes.put(temprecipes.get(n).toString(), Integer.toString(br));
                 }
             }
@@ -292,39 +345,26 @@ public class ShowListOfRecipe extends AppCompatActivity implements OnCheckedChan
         }
     }
 
-    private void setAdapterr(String string) {
-        if (string == "") {
-            listOfShowedRecept = new MyAdapterPrikazRecepata(this, null, true, null, null, null, null, receptDB, checkedAll);
-            listView.setAdapter(listOfShowedRecept);
-
-        } else { //da li se igde koristi?
-            listOfShowedRecept = new MyAdapterPrikazRecepata(this, string, true, null, null, null, null, receptDB, checkedAll);
-            listView.setAdapter(listOfShowedRecept);
-        }
-    }
-
-    private void setAdapterForCategory(String string, String category) {//for ShowWeeklyMenu.class
-
-        listOfShowedRecept = new MyAdapterPrikazRecepata(this,
-                string, category, receptDB, checkedAll);
-        listView.setAdapter(listOfShowedRecept);
-
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
         super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.add_delete_change_menu, menu);
 
-        if (getIntent().getStringExtra("addingmeal") != null) {
-            MenuItem item_add_to_menu = menu.findItem(R.id.menu_add_to_menu);
-            MenuItem item_add = menu.findItem(R.id.menu_add);
-            MenuItem item_delete = menu.findItem(R.id.menu_delete);
-            item_add_to_menu.setVisible(true);
+        MenuItem item_add_to_menu = menu.findItem(R.id.menu_add_to_menu);
+        MenuItem item_add = menu.findItem(R.id.menu_add);
+        MenuItem item_delete = menu.findItem(R.id.menu_delete);
 
+        if (getIntent().getStringExtra("addingmeal") != null){
+            item_add_to_menu.setVisible(true);
             item_add.setVisible(false);
             item_delete.setVisible(false);
+            if(listOfShowedRecept == null || listOfShowedRecept.isEmpty() ){
+                item_add_to_menu.setVisible(false);
+                item_add.setVisible(false);
+                item_delete.setVisible(false);
+                Toast.makeText(getApplicationContext(),"No recipes for category",Toast.LENGTH_SHORT).show();
+            }
         }
         return true;
     }
@@ -355,22 +395,20 @@ public class ShowListOfRecipe extends AppCompatActivity implements OnCheckedChan
                         if (file.exists()) {
                             file.delete();
                         }
-
                         receptDB.deleteRecept(cbtag.get(i));
                         menuDb.deleteForRecipe(cbtag.get(i));
                         recIngDB.removeAllForRec_id(cbtag.get(i));
-
                     }
                 }
 
-                finish();
+                recreate();
                 return true;
 
             case R.id.menu_add:
                 Intent addintent = new Intent(this, AddRecipe.class);
                 addintent.putExtra("add_new_recipe", "addRecipe"); //use in AddRecipe, if create new recipe
                 startActivity(addintent);
-                finish();
+                //finish();
                 return true;
 
             case R.id.menu_add_to_menu: //from ShowWeeklyMenu.class
@@ -403,9 +441,7 @@ public class ShowListOfRecipe extends AppCompatActivity implements OnCheckedChan
         } else {
             checkedAll = false;
         }
-
         postaviAdapter();
-
     }
 
     @Override
@@ -422,4 +458,9 @@ public class ShowListOfRecipe extends AppCompatActivity implements OnCheckedChan
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        this.finish();
+        super.onBackPressed();
+    }
 }

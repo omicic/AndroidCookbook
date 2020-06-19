@@ -3,6 +3,7 @@ package com.example.androidcookbook;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -61,7 +62,6 @@ public class MyAdapterPrikazRecepata extends BaseAdapter implements OnCheckedCha
 
     public MyAdapterPrikazRecepata() {
         super();
-
     }
 
     //konstruktor koji se poziva za prikaz recepata iz FindRecipes, po kritrerijumu svojstava
@@ -101,13 +101,12 @@ public class MyAdapterPrikazRecepata extends BaseAdapter implements OnCheckedCha
             if (stringExtra == null && recipeidforfindRecipes != null) {
                 getDataForFindRecipes(); //pretraga recepata po zadatim namirnicama, iz FindRecipes.class
             } else {
-                getData(stringExtra, null); //pretraga po zadatom nazivu recepta, ili zadatoj kategoriji:salata ili dezert za ShowWeeklyMenu.class
+                getDataCategory(null); //pretraga po zadatom nazivu recepta, ili zadatoj kategoriji:salata ili dezert za ShowWeeklyMenu.class
             }
         } else {
-            getData(null, null);
+            getDataCategory(null);
         }
     }
-
 
     //konstruktor koji se poziva iz klase ShowListOfRecipe, prikazivanje odabranog recepta kroz pretragu
     public MyAdapterPrikazRecepata(ShowListOfRecipe showListOfRecipes,
@@ -125,12 +124,18 @@ public class MyAdapterPrikazRecepata extends BaseAdapter implements OnCheckedCha
 
         checked.clear();
 
-        getData(stringExtra, category);
+        if (receptAL == null) {
+            receptAL = new ArrayList<Recipe>();
+        } else {
+            receptAL.clear();
+        }
+
+        getDataCategory(category);
 
     }
 
     public MyAdapterPrikazRecepata(ShowListOfRecipe showListOfRecipe,
-                                   String string, RecipeDB receptDB) {
+                                   String cat, RecipeDB receptDB) {
 
         mInflater = (LayoutInflater) showListOfRecipe.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.context = showListOfRecipe;
@@ -147,13 +152,14 @@ public class MyAdapterPrikazRecepata extends BaseAdapter implements OnCheckedCha
             receptAL.clear();
         }
 
-        getData(string);
+        getData(cat);
 
     }
 
-    private void getData(String string) {
-        if (!string.equals("")) {
-            receptAL = (ArrayList<Recipe>) dbRecept.getAllRecepteByNaziv(string);    //Ako pretra�uje
+    private void getData(String name) {
+
+        if (name!="") {
+            receptAL = (ArrayList<Recipe>) dbRecept.getAllRecepteByNaziv(name);    //Ako pretra�uje
         } else {
             receptAL = (ArrayList<Recipe>) dbRecept.getAllRecepte();    //Ako prikazuje sve recepte
         }
@@ -188,88 +194,14 @@ public class MyAdapterPrikazRecepata extends BaseAdapter implements OnCheckedCha
         }
     }
 
-    private void getData(String stringExtra, String category) {
+    private void getDataCategory(String category) {
 
-        if (stringExtra != null) {
-            if (stringExtra.equals("Salad")) {
-                receptAL = (ArrayList<Recipe>) dbRecept.getAllRecipeByCategory(stringExtra);    //Ako pretra�uje
-            }
-
-            if (stringExtra.equals("Dessert")) {
-                receptAL = (ArrayList<Recipe>) dbRecept.getAllRecipeByCategory(stringExtra);    //Ako pretra�uje
-            }
-
-            if (stringExtra.equals("MainMeal")) {
-                String meal = null;
-                switch (category) {
-                    case "MON,B":
-                        meal = "Breakfast";
-                        break;
-                    case "MON,L":
-                        meal = "Lunch";
-                        break;
-                    case "MON,D":
-                        meal = "Dinner";
-                        break;
-
-                    case "TUE,B":
-                        meal = "Breakfast";
-                        break;
-                    case "TUE,L":
-                        meal = "Lunch";
-                        break;
-                    case "TUE,D":
-                        meal = "Dinner";
-                        break;
-
-                    case "THU,B":
-                        meal = "Breakfast";
-                        break;
-                    case "THU,L":
-                        meal = "Lunch";
-                        break;
-                    case "THU,D":
-                        meal = "Dinner";
-                        break;
-
-                    case "FRI,B":
-                        meal = "Breakfast";
-                        break;
-                    case "FRI,L":
-                        meal = "Lunch";
-                        break;
-                    case "FRI,D":
-                        meal = "Dinner";
-                        break;
-
-                    case "SAT,B":
-                        meal = "Breakfast";
-                        break;
-                    case "SAT,L":
-                        meal = "Lunch";
-                        break;
-                    case "SAT,D":
-                        meal = "Dinner";
-                        break;
-
-                    case "SUN,B":
-                        meal = "Breakfast";
-                        break;
-                    case "SUN,L":
-                        meal = "Lunch";
-                        break;
-                    case "SUN,D":
-                        meal = "Dinner";
-                        break;
-                }
-
-                receptAL = (ArrayList<Recipe>) dbRecept.getAllRecipeByCategory(meal); //treba samo Breakfast ili Lunch ili Dinner
-            }
-        } else {
+        if(category==null || category.equals("All") || category.equals("")){
             receptAL = (ArrayList<Recipe>) dbRecept.getAllRecepte();    //Ako prikazuje sve recepte
+        } else {
+            receptAL = (ArrayList<Recipe>) dbRecept.getAllRecipeByCategory(category);
         }
     }
-
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -309,11 +241,9 @@ public class MyAdapterPrikazRecepata extends BaseAdapter implements OnCheckedCha
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
         if (buttonView.getId() == R.id.cb_row_show) {
             checked.put(buttonView.getTag().toString(), isChecked);
         }
-
     }
 
     @Override
@@ -386,8 +316,8 @@ public class MyAdapterPrikazRecepata extends BaseAdapter implements OnCheckedCha
                         noteIntent.putStringArrayListExtra("ingredientstobuy", ingfornote);
                         noteIntent.putExtra("quantitiestobuy", qufornote);
                         this.context.startActivity(noteIntent);
-                        ((Activity) this.context).finish();
-                    } else {
+                        //((Activity) this.context).finish();
+                    } else { //Recept nema svojstva
                         Toast.makeText(this.context, context.getString(R.string.toastnorecipes), Toast.LENGTH_LONG).show();
                     }
                 }

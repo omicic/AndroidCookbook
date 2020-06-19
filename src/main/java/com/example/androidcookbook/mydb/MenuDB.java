@@ -37,7 +37,7 @@ public class MenuDB {
 
             return db.getDb().insert(Constants.TABLE_MENU, null, newTaskValue);
         } catch (SQLiteException ex) {
-            Log.v("Greska insert into database", ex.getMessage());
+            Log.v("Insert into database error", ex.getMessage());
             return -1;
         }
     }

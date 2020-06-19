@@ -10,6 +10,8 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ShapeDrawable;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,6 +29,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.androidcookbook.MainActivity;
 import com.example.androidcookbook.R;
 import com.example.androidcookbook.mydb.MenuDB;
 import com.example.androidcookbook.mydb.RecipeDB;
@@ -40,9 +43,10 @@ import java.util.Map.Entry;
 
 public class ChangeWeeklyMenu extends AppCompatActivity implements OnClickListener, OnCheckedChangeListener {
 
+    private static final int GET_STARTER = 1;
     private static final int GET_SALAD = 2;
     private static final int GET_DESSERT = 3;
-    private static final int GET_MAIN_MEAL = 1;
+
     private MenuDB dbmenu;
     private RecipeDB dbrecipe;
     private HashMap<String, RecipeMenu> hmMonday;
@@ -54,14 +58,7 @@ public class ChangeWeeklyMenu extends AppCompatActivity implements OnClickListen
     private HashMap<String, RecipeMenu> hmSunday;
     private LinearLayout linLayout;
 
-    private ArrayList<RecipeMenu> lunches;
-
-    private TextView tvBreakfast;
-    private TextView tvLunch;
-    private TextView tvDinner;
-    private LinearLayout dayLayout;
     private ArrayList<RecipeMenu> alrecipemenu;
-    private ShapeDrawable rectShapeDrawable;
     private Typeface tf;
     private Button btBreakfast;
     private View btLunch;
@@ -82,26 +79,14 @@ public class ChangeWeeklyMenu extends AppCompatActivity implements OnClickListen
     private LinearLayout llday;
     private LinearLayout linRow;
     private LayoutParams params;
-    private TextView tvBreakfastSalad;
-    private TextView tvBreakfastDessert;
 
-    private ArrayList<String> alSaladDessertCategoryMon;
-    private ArrayList<String> alSaladDessertCategoryTue;
-    private ArrayList<String> alSaladDessertCategoryThu;
-    private ArrayList<String> alSaladDessertCategoryWen;
-    private ArrayList<String> alSaladDessertCategorySat;
-    private ArrayList<String> alSaladDessertCategoryFri;
-    private ArrayList<String> alSaladDessertCategorySun;
-    private TextView tvSalad;
     private ArrayList<String> menu_ids;
     private ArrayList<RecipeMenu> recipemenual;
-    private TextView tvDessert;
-    private ArrayList<String> fromSetWeeklyMenurec_ids;
-    private ArrayList<String> fromSetWeeklyMenudays;
-    private boolean[] fromSetWeeklyMenuchecked;
+
     private CheckBox cb;
     private String menu;
     private RecipeMenu recipeforadd;
+    private ArrayList<String> fromSetWeeklyMenurec_ids;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,7 +108,7 @@ public class ChangeWeeklyMenu extends AppCompatActivity implements OnClickListen
         recipemenual = new ArrayList<RecipeMenu>();
         resultcheckedrecid = new ArrayList<String>();
         fromSetWeeklyMenurec_ids = new ArrayList<String>();
-        fromSetWeeklyMenudays = new ArrayList<String>();
+        //fromSetWeeklyMenudays = new ArrayList<String>();
 
         linLayout = new LinearLayout(this);
         linLayout.setBackgroundColor(Color.BLACK);
@@ -151,8 +136,9 @@ public class ChangeWeeklyMenu extends AppCompatActivity implements OnClickListen
         linLayout.setOrientation(LinearLayout.VERTICAL);
         scLinLayout.addView(linLayout);
         setContentView(scLinLayout, linLayoutParam);
-
     }
+
+
 
     private void createLayout(HashMap<String, RecipeMenu> hm, Integer dayOfweek) {
 
@@ -169,46 +155,46 @@ public class ChangeWeeklyMenu extends AppCompatActivity implements OnClickListen
         lbreakfast = new LinearLayout(this);
         lbreakfast.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
         lbreakfast.setOrientation(LinearLayout.HORIZONTAL);
-        lbreakfast.setBackgroundResource(R.drawable.breakfast);
+        lbreakfast.setBackgroundResource(R.drawable.breakfast1);
 
         llunch = new LinearLayout(this);
         llunch.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
         llunch.setOrientation(LinearLayout.HORIZONTAL);
-        llunch.setBackgroundResource(R.drawable.lunch);
+        llunch.setBackgroundResource(R.drawable.lunch1);
 
         ldinner = new LinearLayout(this);
         ldinner.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
         ldinner.setOrientation(LinearLayout.HORIZONTAL);
-        ldinner.setBackgroundResource(R.drawable.dinner);
+        ldinner.setBackgroundResource(R.drawable.dinner1);
 
         ImageView ivday = new ImageView(this);
         switch (dayOfweek) {
             case 0:
-                ivday.setBackgroundResource(R.drawable.monday);
+                ivday.setBackgroundResource(R.drawable.monday1);
                 llday.addView(ivday);
                 break;
             case 1:
-                ivday.setBackgroundResource(R.drawable.tuesday);
+                ivday.setBackgroundResource(R.drawable.tuesday1);
                 llday.addView(ivday);
                 break;
             case 2:
-                ivday.setBackgroundResource(R.drawable.wednesday);
+                ivday.setBackgroundResource(R.drawable.wednesday1);
                 llday.addView(ivday);
                 break;
             case 3:
-                ivday.setBackgroundResource(R.drawable.thursday);
+                ivday.setBackgroundResource(R.drawable.thursday1);
                 llday.addView(ivday);
                 break;
             case 4:
-                ivday.setBackgroundResource(R.drawable.friday);
+                ivday.setBackgroundResource(R.drawable.friday1);
                 llday.addView(ivday);
                 break;
             case 5:
-                ivday.setBackgroundResource(R.drawable.saturday);
+                ivday.setBackgroundResource(R.drawable.saturday1);
                 llday.addView(ivday);
                 break;
             case 6:
-                ivday.setBackgroundResource(R.drawable.sunday);
+                ivday.setBackgroundResource(R.drawable.sunday1);
                 llday.addView(ivday);
                 break;
         }
@@ -223,15 +209,15 @@ public class ChangeWeeklyMenu extends AppCompatActivity implements OnClickListen
         lltvmealdinner.setOrientation(LinearLayout.VERTICAL);
 
         btBreakfast = new Button(this);
-        btBreakfast.setBackgroundResource(R.drawable.change);
+        btBreakfast.setBackgroundResource(R.drawable.plusicon);
         btBreakfast.setOnClickListener(this);
 
         btLunch = new Button(this);
-        btLunch.setBackgroundResource(R.drawable.change);
+        btLunch.setBackgroundResource(R.drawable.plusicon);
         btLunch.setOnClickListener(this);
 
         btDinner = new Button(this);
-        btDinner.setBackgroundResource(R.drawable.change);
+        btDinner.setBackgroundResource(R.drawable.plusicon);
         btDinner.setOnClickListener(this);
 
         switch (dayOfweek) {
@@ -271,26 +257,31 @@ public class ChangeWeeklyMenu extends AppCompatActivity implements OnClickListen
                 btDinner.setTag("SUN,D");
                 break;
             default:
-
                 break;
         }
-
 
         menu_ids.clear();
         recipemenual.clear();
         citajMapu(hm);
         punicb();
 
+        LinearLayout.LayoutParams paramss = new LinearLayout.LayoutParams(50, 50);
+        paramss.leftMargin = 8;
+        paramss.gravity = Gravity.RIGHT;
+
         lbreakfast.addView(lltvmealbreakfast);
         lltvmealbreakfast.setLayoutParams(new TableLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, 1.0f));
+        btBreakfast.setLayoutParams(paramss);
         lbreakfast.addView(btBreakfast);
 
         llunch.addView(lltvmeallunch);
         lltvmeallunch.setLayoutParams(new TableLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, 1.0f));
+        btLunch.setLayoutParams(paramss);
         llunch.addView(btLunch);
 
         ldinner.addView(lltvmealdinner);
         lltvmealdinner.setLayoutParams(new TableLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, 1.0f));
+        btDinner.setLayoutParams(paramss);
         ldinner.addView(btDinner);
 
 
@@ -302,7 +293,6 @@ public class ChangeWeeklyMenu extends AppCompatActivity implements OnClickListen
         linRow.addView(ltv);
 
         linLayout.addView(linRow);
-
     }
 
     private void citajMapu(HashMap<String, RecipeMenu> hm) {
@@ -315,7 +305,6 @@ public class ChangeWeeklyMenu extends AppCompatActivity implements OnClickListen
         }
     }
 
-
     private void punicb() {
 
         lltvmealbreakfast.setPadding(10, 0, 0, 0);
@@ -324,7 +313,8 @@ public class ChangeWeeklyMenu extends AppCompatActivity implements OnClickListen
 
         for (int j = 0; j < recipemenual.size(); j++) {
             cb = new CheckBox(this);
-            cb.setTextSize(16);
+            cb.setTextSize(14);
+            cb.setTextColor(Color.rgb(50,120,160));
             cb.setTag(recipemenual.get(j).getMenu_id().toString());
             cb.setOnCheckedChangeListener(this);
             cb.setChecked(true);
@@ -338,12 +328,11 @@ public class ChangeWeeklyMenu extends AppCompatActivity implements OnClickListen
         menu_ids.clear();
         recipemenual.clear();
 
-
     }
 
     private void addViewTolltvmeal(String recipe, String category, String mainmeal, String menu_id) {
 
-        if (category.equals("Salad") || category.equals("Dessert")) {
+        if (category.equals("Salad") || category.equals("Dessert") || category.equals("Starter")) {
 
             if (mainmeal.equals("Breakfast")) {
                 lltvmealbreakfast.addView(cb);
@@ -410,7 +399,7 @@ public class ChangeWeeklyMenu extends AppCompatActivity implements OnClickListen
 
     @Override
     public void onClick(View v) {
-        //kada klikne dugme treba da se pojavi meni u kome ce korisnik odabrati koju vrstu jela dodaje: Salatu, Dezert
+        //kada klikne dugme treba da se pojavi meni u kome ce korisnik odabrati koju vrstu jela dodaje: Starter, Salatu, Dezert
         //treba dodati u hashmapu odredjenog dana jelo u kombinaciji recids,meal
         daymeal = v.getTag().toString();
         onCreateDialog(daymeal);
@@ -422,16 +411,23 @@ public class ChangeWeeklyMenu extends AppCompatActivity implements OnClickListen
 
         Builder alertDialogBuilder = new Builder(ChangeWeeklyMenu.this);
         alertDialogBuilder.setCancelable(true);
-        alertDialogBuilder.setTitle("Choose sort of meal")
+        alertDialogBuilder.setTitle("Add...")
                 .setItems(R.array.meal_array, new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface dialog, int which) {
                         if (which == 0) {
-                            Intent addSalad = new Intent(getBaseContext(), ShowListOfRecipe.class);
-                            addSalad.putExtra("addingmeal", "Salad");
-                            startActivityForResult(addSalad, GET_SALAD);
+                            Intent addStarter = new Intent( getBaseContext(), ShowListOfRecipe.class);
+                            addStarter.putExtra("addingmeal", "Starter");
+                            addStarter.putExtra("category", "Starter");
+                            startActivityForResult(addStarter, GET_STARTER);
                         }
                         if (which == 1) {
+                            Intent addSalad = new Intent(getBaseContext(), ShowListOfRecipe.class);
+                            addSalad.putExtra("addingmeal", "Salad");
+                            addSalad.putExtra("category", "Salad");
+                            startActivityForResult(addSalad, GET_SALAD);
+                        }
+                        if (which == 2) {
                             Intent addDessert = new Intent(getBaseContext(), ShowListOfRecipe.class);
                             addDessert.putExtra("addingmeal", "Dessert");
                             startActivityForResult(addDessert, GET_DESSERT);
@@ -442,13 +438,12 @@ public class ChangeWeeklyMenu extends AppCompatActivity implements OnClickListen
         dialog = alertDialogBuilder.create();
         dialog.show();
         return dialog;
-
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         this.data = data;
-        if (requestCode == GET_SALAD) {
+        if (requestCode == GET_STARTER) {//1
             if (resultCode == RESULT_OK) {
                 resultcheckedrecid = data.getExtras().getStringArrayList("add_to_menu_cbtag");//from ShowListOfRecipe.class
                 resultchecks = (ArrayList<Boolean>) data.getSerializableExtra("add_to_menu_checks");//from ShowListOfRecipe.class
@@ -461,7 +456,20 @@ public class ChangeWeeklyMenu extends AppCompatActivity implements OnClickListen
             }
         }
 
-        if (requestCode == GET_DESSERT) {
+        if (requestCode == GET_SALAD) {//2
+            if (resultCode == RESULT_OK) {
+                resultcheckedrecid = data.getExtras().getStringArrayList("add_to_menu_cbtag");//from ShowListOfRecipe.class
+                resultchecks = (ArrayList<Boolean>) data.getSerializableExtra("add_to_menu_checks");//from ShowListOfRecipe.class
+                //prosledjivanje ShoeWeeklyMenu.class istih
+                AddToLayout(resultcheckedrecid, resultchecks);
+
+                if (resultCode == RESULT_CANCELED) {
+                    finish();
+                }
+            }
+        }
+
+        if (requestCode == GET_DESSERT) {//3
             if (resultCode == RESULT_OK) {
                 resultcheckedrecid = data.getExtras().getStringArrayList("add_to_menu_cbtag");//from ShowListOfRecipe.class
                 resultchecks = (ArrayList<Boolean>) data.getSerializableExtra("add_to_menu_checks");//from ShowListOfRecipe.class
@@ -558,15 +566,11 @@ public class ChangeWeeklyMenu extends AppCompatActivity implements OnClickListen
     }
 
     private void AddHashMap(String rec_id, String day, String meal) { //meal B,L,D
-        // TODO Auto-generated method stub
         //int index = alrecipemenu.size();
-
         dbmenu.getDb().open();
         recipeforadd = new RecipeMenu();
         recipeforadd = dbmenu.getMenuByRecId(rec_id, day); //jos uvek nema uneto u bazi meal jer nije izvrseno cuvanje
         recipeforadd.setMainmeal(meal);
-
-        //Log.d("recipeforadd.setMainmeal(meal)",recipeforadd.getMainmeal().toString());//ok
 
         //treba dodati hm-i
         if (day == "0") {
@@ -599,7 +603,6 @@ public class ChangeWeeklyMenu extends AppCompatActivity implements OnClickListen
         createLayout(hmFriday, 4);
         createLayout(hmSaturday, 5);
         createLayout(hmSunday, 6);
-
     }
 
     @Override
@@ -611,7 +614,6 @@ public class ChangeWeeklyMenu extends AppCompatActivity implements OnClickListen
         } else {
             rm.setCheck("false");
         }
-
 
         if (rm.getDay().equals("0")) {
             getMainMealFromAlreadySet(hmMonday, rm);            //put mainmeal from recipeforadd into rm
@@ -650,20 +652,15 @@ public class ChangeWeeklyMenu extends AppCompatActivity implements OnClickListen
         citajMapu(hm);
         for (int j = 0; j < menu_ids.size(); j++) {
             if (menu_ids.get(j).equals(rm.getMenu_id()) && recipemenual.get(j).getMainmeal() != null) {
-                //Log.d("recipemenual.get(j).getMainmeal()",recipemenual.get(j).getMainmeal());//ok
                 rm.setMainmeal(recipemenual.get(j).getMainmeal());
             }
         }
-
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu m) {
-
         getMenuInflater().inflate(R.menu.edit_save_weekly_menu, m);
-
         return true;
-
     }
 
     @Override
@@ -683,8 +680,6 @@ public class ChangeWeeklyMenu extends AppCompatActivity implements OnClickListen
                 Intent i = new Intent(this, ShowWeeklyMenu.class);
                 startActivity(i);
                 finish();
-
-
                 return true;
 
             case R.id.menu_set_main_meal:
@@ -706,7 +701,6 @@ public class ChangeWeeklyMenu extends AppCompatActivity implements OnClickListen
         return true;
     }
 
-
     private void updatedbMenu(HashMap<String, RecipeMenu> hm) {
 
         recipemenual.clear();
@@ -720,16 +714,7 @@ public class ChangeWeeklyMenu extends AppCompatActivity implements OnClickListen
 
     @Override
     public void onBackPressed() {
-        // TODO Auto-generated method stub
         super.onBackPressed();
-        //if(menu.equals("edit")){
-        Intent i = new Intent(this, ShowWeeklyMenu.class);
-        startActivity(i);
-        finish();
-        //} else {
-        //finish();
-        //}
-
     }
 }
 

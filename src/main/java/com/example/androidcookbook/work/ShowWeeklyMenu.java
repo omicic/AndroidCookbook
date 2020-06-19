@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ShapeDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -102,9 +103,8 @@ public class ShowWeeklyMenu extends AppCompatActivity implements OnCheckedChange
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
-        super.onCreate(savedInstanceState);
 
+        super.onCreate(savedInstanceState);
         tf = Typeface.createFromAsset(getAssets(), "fonts/quikhand.ttf");
         tf.isItalic();
 
@@ -137,13 +137,13 @@ public class ShowWeeklyMenu extends AppCompatActivity implements OnCheckedChange
 
         CreateHashMap(); //? posebna nit
 
-        createLayout(hmMonday, 0);
-        createLayout(hmTuersday, 1);
-        createLayout(hmWednesday, 2);
-        createLayout(hmThursday, 3);
-        createLayout(hmFriday, 4);
-        createLayout(hmSaturday, 5);
-        createLayout(hmSunday, 6);
+            createLayout(hmMonday, 0);
+            createLayout(hmTuersday, 1);
+            createLayout(hmWednesday, 2);
+            createLayout(hmThursday, 3);
+            createLayout(hmFriday, 4);
+            createLayout(hmSaturday, 5);
+            createLayout(hmSunday, 6);
 
         linLayout.setOrientation(LinearLayout.VERTICAL);
         scLinLayout.addView(linLayout);
@@ -166,46 +166,46 @@ public class ShowWeeklyMenu extends AppCompatActivity implements OnCheckedChange
         lbreakfast = new LinearLayout(this);
         lbreakfast.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
         lbreakfast.setOrientation(LinearLayout.HORIZONTAL);
-        lbreakfast.setBackgroundResource(R.drawable.breakfast);
+        lbreakfast.setBackgroundResource(R.drawable.breakfast1);
 
         llunch = new LinearLayout(this);
         llunch.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
         llunch.setOrientation(LinearLayout.HORIZONTAL);
-        llunch.setBackgroundResource(R.drawable.lunch);
+        llunch.setBackgroundResource(R.drawable.lunch1);
 
         ldinner = new LinearLayout(this);
         ldinner.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
         ldinner.setOrientation(LinearLayout.HORIZONTAL);
-        ldinner.setBackgroundResource(R.drawable.dinner);
+        ldinner.setBackgroundResource(R.drawable.dinner1);
 
         ImageView ivday = new ImageView(this);
         switch (dayOfweek) {
             case 0:
-                ivday.setBackgroundResource(R.drawable.monday);
+                ivday.setBackgroundResource(R.drawable.monday1);
                 llday.addView(ivday);
                 break;
             case 1:
-                ivday.setBackgroundResource(R.drawable.tuesday);
+                ivday.setBackgroundResource(R.drawable.tuesday1);
                 llday.addView(ivday);
                 break;
             case 2:
-                ivday.setBackgroundResource(R.drawable.wednesday);
+                ivday.setBackgroundResource(R.drawable.wednesday1);
                 llday.addView(ivday);
                 break;
             case 3:
-                ivday.setBackgroundResource(R.drawable.thursday);
+                ivday.setBackgroundResource(R.drawable.thursday1);
                 llday.addView(ivday);
                 break;
             case 4:
-                ivday.setBackgroundResource(R.drawable.friday);
+                ivday.setBackgroundResource(R.drawable.friday1);
                 llday.addView(ivday);
                 break;
             case 5:
-                ivday.setBackgroundResource(R.drawable.saturday);
+                ivday.setBackgroundResource(R.drawable.saturday1);
                 llday.addView(ivday);
                 break;
             case 6:
-                ivday.setBackgroundResource(R.drawable.sunday);
+                ivday.setBackgroundResource(R.drawable.sunday1);
                 llday.addView(ivday);
                 break;
         }
@@ -222,11 +222,9 @@ public class ShowWeeklyMenu extends AppCompatActivity implements OnCheckedChange
         menu_ids.clear();
         recipemenual.clear();
 
-
         citajMapu(hm); //? AsyncTask
 
         punitv();
-
 
         lbreakfast.addView(lltvmealbreakfast);
         lltvmealbreakfast.setLayoutParams(new TableLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, 1.0f));
@@ -246,7 +244,6 @@ public class ShowWeeklyMenu extends AppCompatActivity implements OnCheckedChange
             ldinner.addView(btDinner);
         }
 
-
         ltv.addView(lbreakfast);
         ltv.addView(llunch);
         ltv.addView(ldinner);
@@ -265,6 +262,7 @@ public class ShowWeeklyMenu extends AppCompatActivity implements OnCheckedChange
             Entry<String, RecipeMenu> entry = myVOwnIterator.next();
             menu_ids.add(entry.getKey().toString());
             recipemenual.add(entry.getValue());
+            Log.d("recipemenual ------->", entry.getKey());
         }
     }
 
@@ -284,20 +282,9 @@ public class ShowWeeklyMenu extends AppCompatActivity implements OnCheckedChange
             tv.setPadding(20, 20, 0, 0);
             tv.setText(dbrecipe.getRecepteById(recipemenual.get(j).getRec_id()).getRecipe().toString());
 
-            if (dbrecipe.getRecepteById(recipemenual.get(j).getRec_id()).getCategory().equals("Salad")) {
-
-                if (recipemenual.get(j).getMainmeal().equals("Breakfast")) {
-                    lltvmealbreakfast.addView(tv);
-                }
-                if (recipemenual.get(j).getMainmeal().equals("Lunch")) {
-                    lltvmeallunch.addView(tv);
-                }
-                if (recipemenual.get(j).getMainmeal().equals("Dinner")) {
-                    lltvmealdinner.addView(tv);
-                }
-            }
-
-            if (dbrecipe.getRecepteById(recipemenual.get(j).getRec_id()).getCategory().equals("Dessert")) {
+            if ((dbrecipe.getRecepteById(recipemenual.get(j).getRec_id()).getCategory().equals("Salad")) ||
+                    (dbrecipe.getRecepteById(recipemenual.get(j).getRec_id()).getCategory().equals("Dessert")) ||
+                    (dbrecipe.getRecepteById(recipemenual.get(j).getRec_id()).getCategory().equals("Starter")) ) {
 
                 if (recipemenual.get(j).getMainmeal().equals("Breakfast")) {
                     lltvmealbreakfast.addView(tv);
@@ -419,26 +406,21 @@ public class ShowWeeklyMenu extends AppCompatActivity implements OnCheckedChange
 
     @Override
     public boolean onCreateOptionsMenu(Menu m) {
-
         getMenuInflater().inflate(R.menu.weekly_menu, m);
-
         return true;
-
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_edit:
-
                 Intent changeWeeklymenuIntent = new Intent(this, ChangeWeeklyMenu.class);
                 startActivity(changeWeeklymenuIntent);
                 finish();
                 return true;
-
             case R.id.menu_create_shopping_list:
-                Intent MakeNoteWeeklyIntent = new Intent(this, MakeNoteForAll.class);
-                startActivity(MakeNoteWeeklyIntent);
+                Intent makeNoteWeeklyIntent = new Intent(this, MakeNoteForAll.class);
+                startActivity(makeNoteWeeklyIntent);
                 finish();
                 return true;
 
@@ -448,10 +430,7 @@ public class ShowWeeklyMenu extends AppCompatActivity implements OnCheckedChange
 
     @Override
     public void onBackPressed() {
-        // TODO Auto-generated method stub
-        super.onBackPressed();
         this.finish();
-
     }
 }
 

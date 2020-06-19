@@ -104,13 +104,8 @@ public class ShowRecipe extends AppCompatActivity implements OnClickListener {
 
             try {
                 final Uri imageUri = Uri.fromFile(new File(pathName));
-                //final Uri imageUri = FileProvider.getUriForFile(this, this.getPackageName() + ".provider", new File(pathName));
-
-               // final Uri imageUri = Uri.parse(pathName);
-                Log.d("pathnameShowrecipe", String.valueOf(imageUri));
-
-              final InputStream imageStream = getContentResolver().openInputStream(imageUri);
-               final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+                final InputStream imageStream = getContentResolver().openInputStream(imageUri);
+                final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
                 Bitmap scaledBitmap = utility.ShrinkBitmap(this, selectedImage);
                 ivRecipe.setImageBitmap(scaledBitmap);
 
