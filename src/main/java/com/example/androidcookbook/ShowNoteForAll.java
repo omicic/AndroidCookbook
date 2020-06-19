@@ -35,7 +35,6 @@ public class ShowNoteForAll extends Activity implements OnClickListener, OnCheck
     private int padding;
     private int size;
     private LinearLayout lltextviewandcheckbos;
-    private LinearLayout llforokbutton;
     private LinearLayout llheader;
     private LinearLayout llnote;
 
@@ -145,8 +144,6 @@ public class ShowNoteForAll extends Activity implements OnClickListener, OnCheck
     @Override
     public void onClick(View v) {
 
-        preferences = this.getSharedPreferences("WeeklyShoppingList", this.MODE_PRIVATE);
-
         if (v.getId() == R.id.ibdelete) { //delete
             preferences.edit().clear().commit();
             File file = new File("/data/data/com.example.androidcookbook/shared_prefs/WeeklyShoppingList.xml");
@@ -175,15 +172,20 @@ public class ShowNoteForAll extends Activity implements OnClickListener, OnCheck
     @Override
     public void onCheckedChanged(CompoundButton cb, boolean check) {
         checked.set(cb.getId()-1, Boolean.toString(check));
-
-        String checkk = "checked" + Integer.toString(cb.getId()-1);
-        preferences.edit().putBoolean(checkk, check);;
-        //editor.commit();
-    }
+            }
 
     @Override
     public void onBackPressed() {
-        preferences.edit().commit();
+        //save checked
+        int m = 0;
+        for (String s : checked) {
+            m++;
+            String checkk = "checked" + m;
+            editor = preferences.edit();
+            editor.putBoolean(checkk, Boolean.parseBoolean(s));
+            editor.commit();
+        }
+
         super.onBackPressed();
         this.finish();
     }

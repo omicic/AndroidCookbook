@@ -109,8 +109,18 @@
 
 
 
-        <activity android:name=".ShowNote" android:screenOrientation="portrait" android:theme="@android:style/Theme.Dialog"></activity>
-        <activity android:name=".ShowNoteForAll" android:screenOrientation="portrait" android:theme="@android:style/Theme.Dialog"></activity>
+        <activity
+            android:name=".ShowNote"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Dialog">
+        </activity>
+
+        <activity
+            android:name=".ShowNoteForAll"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Dialog">
+        </activity>
+
         <activity
             android:name=".work.MakeNoteForAll"
             android:theme="@style/Theme.AppCompat"
@@ -127,7 +137,7 @@
 
         <provider
             android:name="com.example.androidcookbook.MySuggestionProvider"
-            android:authorities="com.cook.androidcookery.MySuggestionProvider" />
+            android:authorities="com.example.androidcookbook.MySuggestionProvider" />
         <uses-library android:name="android.test.runner" />
 
     </application>
